@@ -7,8 +7,6 @@
 //
 
 #import "MonthView.h"
-
-#import "PontoModel.h"
 #import "MonthManager.h"
 #import "MonthCell.h"
 
@@ -27,7 +25,6 @@
 }
 
 -(void)didMoveToWindow{
-    NSLog(@"sdfs");
     [[MonthManager sharedinstance] refresh];
     [self refreshLabels];
 }
@@ -39,25 +36,25 @@
 -(void)refreshLabels{
     MonthManager *monthManager = [MonthManager sharedinstance];
     
-    [self.buttonBeforeMonth setTitle:monthManager.beforeMonth forState:UIControlStateNormal];
-    [self.buttonAfterMonth setTitle:monthManager.nextMonth forState:UIControlStateNormal];
+    [self.buttonPreviousMonth setTitle:monthManager.previousMonth forState:UIControlStateNormal];
+    [self.buttonFollowingMonth setTitle:monthManager.followingMonth forState:UIControlStateNormal];
     [self.labelCurrentMonth setText:monthManager.currentMonth];
     
-    [self.labelDescriptionResult setText:[NSString stringWithFormat:@"%@ horas",monthManager.currentTotalMonthHours]];
+    [self.labelResult setText:[NSString stringWithFormat:@"%@ horas",monthManager.currentTotalMonthHours]];
 }
 
 #pragma mark - IBAction's
 
-- (IBAction)goToBackMonth:(id)sender{
+- (IBAction)goToPreviousMonth:(id)sender{
     [[NSNotificationCenter defaultCenter]postNotificationName:NotificationRemoveKeyboard object:nil];
-    [[MonthManager sharedinstance] getMonthBefore];
+    [[MonthManager sharedinstance] getPreviousMonth];
     [tableViewPontoMonthList reloadData];
     [self refreshLabels];
 }
 
-- (IBAction)goToForwardMonth:(id)sender{
+- (IBAction)goToFollowingMonth:(id)sender{
     [[NSNotificationCenter defaultCenter]postNotificationName:NotificationRemoveKeyboard object:nil];
-    [[MonthManager sharedinstance] getMonthAfter];
+    [[MonthManager sharedinstance] getFollowingMonth];
     [tableViewPontoMonthList reloadData];
     [self refreshLabels];
 }
@@ -65,15 +62,15 @@
 #pragma mark - tableViewDelegate
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString * cellIdentifier2 = @"MonthCell";
-    MonthCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier2];
+    static NSString * cellIdentifier = @"MonthCell";
+    MonthCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell == nil){
-        cell = [[[NSBundle mainBundle] loadNibNamed:cellIdentifier2 owner:self options:nil] objectAtIndex:0];
+        cell = [[[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options:nil] objectAtIndex:0];
     }
     
-    cell.dayStr = [[MonthManager sharedinstance] getDayByIndex:indexPath.row InList:[[MonthManager sharedinstance]currentMonthList]];
-    cell.hoursStr = [[MonthManager sharedinstance] getHoursByDay:cell.dayStr InList:[[MonthManager sharedinstance]currentMonthList]];
+    cell.day = [[MonthManager sharedinstance] getDayByIndex:indexPath.row InMonthList:[[MonthManager sharedinstance]currentMonthList]];
+    cell.hours = [[MonthManager sharedinstance] getHoursByDay:cell.day InMonthList:[[MonthManager sharedinstance]currentMonthList]];
     
     [cell setInfo];
     

@@ -27,7 +27,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="goToBackMonth:" destination="0BH-LL-rBB" eventType="touchUpInside" id="oQn-o0-Dkc"/>
+                        <action selector="goToPreviousMonth:" destination="0BH-LL-rBB" eventType="touchUpInside" id="Ctm-Oz-Mzr"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hIa-Vk-xRo">
@@ -38,7 +38,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="goToForwardMonth:" destination="0BH-LL-rBB" eventType="touchUpInside" id="el5-cD-skt"/>
+                        <action selector="goToFollowingMonth:" destination="0BH-LL-rBB" eventType="touchUpInside" id="4VZ-4u-9cD"/>
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20/12/2013" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Qh-Tx-7t3">
@@ -64,11 +64,11 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="buttonAfterMonth" destination="hIa-Vk-xRo" id="hYl-C9-T1N"/>
-                <outlet property="buttonBeforeMonth" destination="p7w-21-EZC" id="yOR-vN-vb8"/>
+                <outlet property="buttonFollowingMonth" destination="hIa-Vk-xRo" id="N4C-wo-Trf"/>
+                <outlet property="buttonPreviousMonth" destination="p7w-21-EZC" id="jEh-H1-m5s"/>
                 <outlet property="labelCurrentMonth" destination="5Qh-Tx-7t3" id="oo4-M4-qN3"/>
                 <outlet property="labelDescription" destination="5h4-RX-LkX" id="rh6-sq-eZj"/>
-                <outlet property="labelDescriptionResult" destination="yj4-Sv-aI3" id="qwe-b7-UeB"/>
+                <outlet property="labelResult" destination="yj4-Sv-aI3" id="p12-C1-4ly"/>
                 <outlet property="tableViewPontoMonthList" destination="or5-0a-MV1" id="tAv-R8-V6x"/>
             </connections>
         </view>

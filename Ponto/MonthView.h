@@ -13,14 +13,13 @@
 }
 
 @property (assign, nonatomic) IBOutlet UILabel *labelCurrentMonth;
-@property (assign, nonatomic) IBOutlet UIButton *buttonBeforeMonth;
-@property (assign, nonatomic) IBOutlet UIButton *buttonAfterMonth;
+@property (assign, nonatomic) IBOutlet UIButton *buttonPreviousMonth;
+@property (assign, nonatomic) IBOutlet UIButton *buttonFollowingMonth;
 
-@property (assign, nonatomic) IBOutlet UILabel *labelDescription;
-@property (assign, nonatomic) IBOutlet UILabel *labelDescriptionResult;
+@property (assign, nonatomic) IBOutlet UILabel *labelResult;
 
-- (IBAction)goToBackMonth:(id)sender;
-- (IBAction)goToForwardMonth:(id)sender;
+- (IBAction)goToPreviousMonth:(id)sender;
+- (IBAction)goToFollowingMonth:(id)sender;
 - (void)refreshLabels;
 
 

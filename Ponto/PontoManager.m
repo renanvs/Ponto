@@ -14,7 +14,7 @@
 
 static id _instance;
 
-+ (PontoManager *) sharedinstance{
++ (PontoManager *) sharedInstance{
     @synchronized(self){
         if (!_instance) {
             _instance = [[self alloc] init];
@@ -28,7 +28,7 @@ static id _instance;
     
     if (self) {
         [self contexto];
-        currentViewType = ViewDayType;
+        currentViewType = ViewBlankType;
         [self setDates];
     }
     
@@ -81,7 +81,7 @@ static id _instance;
     
     NSMutableArray *currentDayPontosList = [[NSMutableArray alloc] init];
     for (PontoModel *pm in result) {
-        if ([pm.days.data isEqualToString:currentDate]) {
+        if ([pm.day.date isEqualToString:currentDate]) {
             [currentDayPontosList addObject:pm];
         }
     }
@@ -107,13 +107,13 @@ static id _instance;
     
     for (PontoModel *pm in dayList) {
         if ([pm.type integerValue] == PointEntraceType ) {
-            enter = pm.hora;
+            enter = pm.hour;
         }else if ([pm.type integerValue] == PointFirstIntervalType ) {
-            first = pm.hora;
+            first = pm.hour;
         }else if ([pm.type integerValue] == PointSecondIntervalType ) {
-            second = pm.hora;
+            second = pm.hour;
         }else if ([pm.type integerValue] == PointExitType) {
-            exit = pm.hora;
+            exit = pm.hour;
         }
     }
     
@@ -166,8 +166,8 @@ static id _instance;
     
     if (result.count > 0){
         for (PontoModel *pm in result) {
-            if ((pm.days == dayModel) && (pm.type == [NSNumber numberWithInt:type])) {
-                pm.hora = [NSString stringWithFormat:@"%@:%@", hour, minute];
+            if ((pm.day == dayModel) && (pm.type == [NSNumber numberWithInt:type])) {
+                pm.hour = [NSString stringWithFormat:@"%@:%@", hour, minute];
                 return;
             }
         }
@@ -175,12 +175,12 @@ static id _instance;
     
     PontoModel *pontoModel = (PontoModel*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:self.contexto];
     
-    pontoModel.hora = [[NSString alloc] initWithFormat:@"%@:%@", hour, minute];
+    pontoModel.hour = [[NSString alloc] initWithFormat:@"%@:%@", hour, minute];
     pontoModel.type = [NSNumber numberWithInt:type];
     
     [self.contexto insertObject:pontoModel];
     
-    pontoModel.days = dayModel;
+    pontoModel.day = dayModel;
     
 }
 
@@ -192,7 +192,7 @@ static id _instance;
     
     if (result.count > 0){
         for (DayModel *dm in result) {
-            if ([dm.data isEqualToString:day]) {
+            if ([dm.date isEqualToString:day]) {
                 return dm;
             }
         }
@@ -200,7 +200,7 @@ static id _instance;
     
     DayModel *dm = [NSEntityDescription insertNewObjectForEntityForName:DayModelEntity inManagedObjectContext:contexto];
     
-    dm.data = day;
+    dm.date = day;
     
     return dm;
 }
@@ -214,8 +214,8 @@ static id _instance;
     
     if (result.count > 0){
         for (PontoModel *pm in result) {
-            if ((pm.days == day) && (pm.type == ponto.type)) {
-                pm.hora = ponto.hora;
+            if ((pm.day == day) && (pm.type == ponto.type)) {
+                pm.hour = ponto.hour;
                 return;
             }
         }
@@ -223,7 +223,7 @@ static id _instance;
     
     [self.contexto insertObject:ponto];
     
-    ponto.days = day;
+    ponto.day = day;
     
 }
 

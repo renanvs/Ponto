@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface MonthCell : UITableViewCell{
-    IBOutlet UILabel  *day;
-    IBOutlet UILabel  *hours;
-    NSString *dayStr;
-    NSString *hoursStr;
+    IBOutlet UILabel  *labelDay;
+    IBOutlet UILabel  *labelMonthHours;
+    NSString *day;
+    NSString *hours;
 }
 
-@property (nonatomic, assign) NSString  *dayStr;
-@property (nonatomic, assign) NSString  *hoursStr;
+@property (nonatomic, assign) NSString  *day;
+@property (nonatomic, assign) NSString  *hours;
 
 -(void)setInfo;
 

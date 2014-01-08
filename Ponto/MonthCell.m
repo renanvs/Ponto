@@ -10,7 +10,7 @@
 
 @implementation MonthCell
 
-@synthesize dayStr, hoursStr;
+@synthesize day, hours;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -29,8 +29,8 @@
 }
 
 -(void)setInfo{
-    day.text = dayStr;
-    hours.text = hoursStr;
+    labelDay.text = day;
+    labelMonthHours.text = hours;
 }
 
 @end

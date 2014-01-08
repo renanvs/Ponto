@@ -9,24 +9,24 @@
 #import <Foundation/Foundation.h>
 
 @interface MonthManager : NSObject{
-    NSString *beforeMonth;
-    NSString *nextMonth;
+    NSString *previousMonth;
+    NSString *followingMonth;
     NSString *currentMonth;
     NSString *currentTotalMonthHours;
     NSMutableArray *currentMonthList;
     NSManagedObjectContext *context;
 }
 
-@property (nonatomic, assign) NSString *beforeMonth;
-@property (nonatomic, assign) NSString *nextMonth;
+@property (nonatomic, assign) NSString *previousMonth;
+@property (nonatomic, assign) NSString *followingMonth;
 @property (nonatomic, assign) NSString *currentMonth;
 @property (nonatomic, assign) NSString *currentTotalMonthHours;
 @property (nonatomic, assign) NSMutableArray *currentMonthList;
 
--(void)getMonthBefore;
--(void)getMonthAfter;
--(NSString*)getDayByIndex:(int)index InList:(NSArray*)list;
--(NSString*)getHoursByDay:(NSString*)day InList:(NSArray*)list;
+-(void)getPreviousMonth;
+-(void)getFollowingMonth;
+-(NSString*)getDayByIndex:(int)index InMonthList:(NSArray*)list;
+-(NSString*)getHoursByDay:(NSString*)day InMonthList:(NSArray*)list;
 -(void)refresh;
 
 

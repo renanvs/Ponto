@@ -30,7 +30,7 @@
 }
 
 -(void)refreshLabels{
-    PontoManager *pontoManager = [PontoManager sharedinstance];
+    PontoManager *pontoManager = [PontoManager sharedInstance];
     
     [self.buttonBeforeDay setTitle:pontoManager.beforeDate forState:UIControlStateNormal];
     [self.buttonAfterDay setTitle:pontoManager.nextDate forState:UIControlStateNormal];
@@ -43,14 +43,14 @@
 
 - (IBAction)goToBackDay:(id)sender{
     [[NSNotificationCenter defaultCenter]postNotificationName:NotificationRemoveKeyboard object:nil];
-    [[PontoManager sharedinstance] getDayBefore];
+    [[PontoManager sharedInstance] getDayBefore];
     [tableViewPontoDayList reloadData];
     [self refreshLabels];
 }
 
 - (IBAction)goToForwardDay:(id)sender{
     [[NSNotificationCenter defaultCenter]postNotificationName:NotificationRemoveKeyboard object:nil];
-    [[PontoManager sharedinstance] getDayAfter];
+    [[PontoManager sharedInstance] getDayAfter];
     [tableViewPontoDayList reloadData];
     [self refreshLabels];
 }
@@ -65,7 +65,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options:nil] objectAtIndex:0];
     }
     
-    cell.date = [[PontoManager sharedinstance] currentDate];
+    cell.date = [[PontoManager sharedInstance] currentDate];
     cell.type = [self getTypeByIndex:indexPath.row];
     
     return cell;

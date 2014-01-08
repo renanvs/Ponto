@@ -11,7 +11,7 @@
 
 @implementation MonthManager
 
-@synthesize beforeMonth, nextMonth, currentMonth, currentMonthList, currentTotalMonthHours;
+@synthesize previousMonth, followingMonth, currentMonth, currentMonthList, currentTotalMonthHours;
 
 static id _instance;
 
@@ -28,7 +28,7 @@ static id _instance;
     self = [super init];
     
     if (self) {
-        context = [[PontoManager sharedinstance]contexto];
+        context = [[PontoManager sharedInstance]contexto];
         currentMonthList = [[NSMutableArray alloc] init];
         [self getMonthListByDate:[[Utils sharedinstance] currentDate]];
         [self setDates];
@@ -39,8 +39,8 @@ static id _instance;
 
 -(void)setDates{
     currentMonth = [[NSString alloc ] initWithString:[self getMonthByMonthDelay:0]];
-    beforeMonth = [[NSString alloc ] initWithString:[self getMonthByMonthDelay:-1]];
-    nextMonth = [[NSString alloc ] initWithString:[self getMonthByMonthDelay:1]];
+    previousMonth = [[NSString alloc ] initWithString:[self getMonthByMonthDelay:-1]];
+    followingMonth = [[NSString alloc ] initWithString:[self getMonthByMonthDelay:1]];
 }
 
 -(void)getMonthListByDate:(NSString*)date{
@@ -74,7 +74,7 @@ static id _instance;
     NSArray *resultSorted = [result sortedArrayUsingDescriptors:sortDescriptors];
     
     for (DayModel *dm in resultSorted) {
-        NSRange range = [dm.data rangeOfString:monthYear];
+        NSRange range = [dm.date rangeOfString:monthYear];
         if (range.length > 0) {
             [currentMonthList addObject:dm];
         }
@@ -87,8 +87,8 @@ static id _instance;
 -(NSString*)sumMonthHoursByList:(NSArray*)list{
     NSMutableArray *hoursList = [[NSMutableArray alloc]init];
     for (DayModel *day in list) {
-        NSString *dayStr = [[day.data componentsSeparatedByString:@"/"] objectAtIndex:0];
-        [hoursList addObject:[self getHoursByDay:dayStr InList:list]];
+        NSString *dayStr = [[day.date componentsSeparatedByString:@"/"] objectAtIndex:0];
+        [hoursList addObject:[self getHoursByDay:dayStr InMonthList:list]];
     }
     
     return [[Utils sharedinstance]getTotalHoursSumByHours:hoursList];
@@ -117,14 +117,14 @@ static id _instance;
 
 }
 
--(void)getMonthAfter{
-    currentMonth = nextMonth;
+-(void)getFollowingMonth{
+    currentMonth = followingMonth;
     [self setDates];
     [self getMonthListByDate:currentMonth];
 }
 
--(void)getMonthBefore{
-    currentMonth = beforeMonth;
+-(void)getPreviousMonth{
+    currentMonth = previousMonth;
     [self setDates];
     [self getMonthListByDate:currentMonth];
 }
@@ -134,19 +134,19 @@ static id _instance;
     [self getMonthListByDate:currentMonth];
 }
 
--(NSString*)getDayByIndex:(int)index InList:(NSArray*)list{
+-(NSString*)getDayByIndex:(int)index InMonthList:(NSArray*)list{
     
     DayModel *dm = [list objectAtIndex:index];
-    NSString *day = [[dm.data componentsSeparatedByString:@"/"] objectAtIndex:0];
+    NSString *day = [[dm.date componentsSeparatedByString:@"/"] objectAtIndex:0];
     
     return day;
 }
 
--(NSString*)getHoursByDay:(NSString*)day InList:(NSArray*)list{
+-(NSString*)getHoursByDay:(NSString*)day InMonthList:(NSArray*)list{
     
     DayModel *dayM = nil;
     for (DayModel *dm in list) {
-        NSString *day_ = [[dm.data componentsSeparatedByString:@"/"] objectAtIndex:0];
+        NSString *day_ = [[dm.date componentsSeparatedByString:@"/"] objectAtIndex:0];
         if([day isEqualToString:day_]){
             dayM = dm;
         }
@@ -157,7 +157,7 @@ static id _instance;
         return @"00:00";//r//
     }
     
-    NSString *hours = [[PontoManager sharedinstance] sumDayTime:dayList];
+    NSString *hours = [[PontoManager sharedInstance] sumDayTime:dayList];
     
     return hours;
 }

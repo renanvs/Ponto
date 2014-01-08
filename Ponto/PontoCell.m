@@ -54,7 +54,7 @@
 }
 
 -(void)populateInfo{
-    PontoManager *pontoManager = [PontoManager sharedinstance];
+    PontoManager *pontoManager = [PontoManager sharedInstance];
     NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:pontoManager.contexto];
     NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
     request.entity = entity;
@@ -62,8 +62,8 @@
     
     if (result.count > 0){
         for (PontoModel *pm in result) {
-            if ([pm.days.data isEqualToString:date] && (pm.type == [NSNumber numberWithInt:type])) {
-                NSArray *components = [pm.hora componentsSeparatedByString:@":"];
+            if ([pm.day.date isEqualToString:date] && (pm.type == [NSNumber numberWithInt:type])) {
+                NSArray *components = [pm.hour componentsSeparatedByString:@":"];
                 self.hours.text = [components objectAtIndex:0];
                 self.minutes.text = [components objectAtIndex:1];
                 return;
@@ -88,13 +88,9 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationRemoveKeyboard object:nil];
 }
 
-- (IBAction)chooseImage:(id)sender{
-    
-}
-
 -(void)addInfoToModel{
     
-    PontoManager *pontoManager = [PontoManager sharedinstance];
+    PontoManager *pontoManager = [PontoManager sharedInstance];
     
     NSString *hora = [self safeTimeUnity:self.hours.text WithTimeType:@"hour"];
     NSString *minutos = [self safeTimeUnity:self.minutes.text WithTimeType:@"minute"];

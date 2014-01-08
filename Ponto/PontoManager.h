@@ -33,6 +33,6 @@
 
 -(NSString*)sumDayTime:(NSArray*)dayList;
 
-+(PontoManager*) sharedinstance;
++(PontoManager*) sharedInstance;
 
 @end

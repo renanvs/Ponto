@@ -47,7 +47,7 @@ static id _instance;
     return status;
 }
 
--(CGRect) screenBoundsDependOnOrientation{
+-(CGRect) screenBoundsOnOrientation{
     CGRect screenBounds = [UIScreen mainScreen].bounds ;
     CGFloat width = CGRectGetWidth(screenBounds)  ;
     CGFloat height = CGRectGetHeight(screenBounds) ;

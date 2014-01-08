@@ -23,6 +23,5 @@
 @property (nonatomic, assign) PointType type;
 
 - (IBAction)action:(id)sender;
-- (IBAction)chooseImage:(id)sender;
 
 @end

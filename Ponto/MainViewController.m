@@ -30,10 +30,11 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    if ([PontoManager sharedinstance].currentViewType == ViewDayType) {
+    if ([PontoManager sharedInstance].currentViewType == ViewBlankType) {
         dayView = [[[NSBundle mainBundle] loadNibNamed:@"DayView" owner:self options:nil] objectAtIndex:0];
         [dayView refreshLabels];
         [self.view addSubview:dayView];
+        [PontoManager sharedInstance].currentViewType = ViewDayType;
     }else{
         NSLog(@"failed to load view");
     }
@@ -47,8 +48,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow) name:UIKeyboardDidShowNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeKeyboard) name:NotificationRemoveKeyboard object:nil];
     
     hasObservers = YES;
@@ -58,16 +57,8 @@
     [self addCloseButtonToNumericKeyboard];
 }
 
--(void)keyboardWillHide{
-//    if (closeButton) {
-//        [closeButton removeFromSuperview];
-//        [closeButton release];
-//        closeButton = nil;
-//    }
-}
-
 -(void)addCloseButtonToNumericKeyboard{
-    CGRect deviceSize = [[Utils sharedinstance] screenBoundsDependOnOrientation];
+    CGRect deviceSize = [[Utils sharedinstance] screenBoundsOnOrientation];
     deviceSize.origin.y = deviceSize.size.height-216-30;
     deviceSize.origin.x = deviceSize.size.width-70;
     
@@ -94,7 +85,6 @@
     
     if (closeKeyboardButton) {
         [closeKeyboardButton removeFromSuperview];
-        //[closeButton release];
         closeKeyboardButton = nil;
     }
 }
@@ -107,23 +97,24 @@
         [dayView refreshLabels];
         
         [self.view addSubview:dayView];
-        [PontoManager sharedinstance].currentViewType = ViewDayType;
+        [PontoManager sharedInstance].currentViewType = ViewDayType;
     }else if (item == self.monthItem) {
         if (!monthView) {
             monthView = [[[NSBundle mainBundle] loadNibNamed:@"MonthView" owner:self options:nil] objectAtIndex:0];
         }
         
         [self.view addSubview:monthView];
-        //[monthView refreshLabels];
+        [monthView refreshLabels];
         
-        [PontoManager sharedinstance].currentViewType = ViewMonthType;
+        [PontoManager sharedInstance].currentViewType = ViewMonthType;
     }else{
-        [PontoManager sharedinstance].currentViewType = ViewOtherType;
+        [PontoManager sharedInstance].currentViewType = ViewOtherType;
     }
 }
 
 - (void)dealloc {
     [_dayItem release];
+    [_monthItem release];
     [super dealloc];
 }
 @end

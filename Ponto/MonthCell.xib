@@ -35,8 +35,8 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="day" destination="IPE-Zp-bB9" id="ZwN-tn-FTU"/>
-                <outlet property="hours" destination="3OZ-zy-z3E" id="mlO-mi-bMQ"/>
+                <outlet property="labelDay" destination="IPE-Zp-bB9" id="h44-8g-INY"/>
+                <outlet property="labelMonthHours" destination="3OZ-zy-z3E" id="I86-ET-upp"/>
             </connections>
         </tableViewCell>
     </objects>

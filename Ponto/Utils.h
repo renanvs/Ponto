@@ -24,7 +24,8 @@ typedef enum{
 typedef enum{
     ViewDayType,
     ViewMonthType,
-    ViewOtherType
+    ViewOtherType,
+    ViewBlankType,
 }ViewType;
 
 typedef enum{
@@ -38,7 +39,7 @@ typedef enum{
 
 -(BOOL)isStringWithNumeric:(NSString*)text;
 
--(CGRect)screenBoundsDependOnOrientation;
+-(CGRect)screenBoundsOnOrientation;
 
 -(NSString*)getTotalHoursSubtractByTimeIn:(NSString*)timeIn AndTimeOut:(NSString*)timeOut;
 -(NSString*)getTotalHoursSubtractByHours:(NSArray*)hoursList;
