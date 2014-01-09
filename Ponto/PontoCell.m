@@ -55,10 +55,10 @@
 
 -(void)populateInfo{
     PontoManager *pontoManager = [PontoManager sharedInstance];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:pontoManager.contexto];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:pontoManager.context];
     NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
     request.entity = entity;
-    NSArray *result = [pontoManager.contexto executeFetchRequest:request error:nil];
+    NSArray *result = [pontoManager.context executeFetchRequest:request error:nil];
     
     if (result.count > 0){
         for (PontoModel *pm in result) {
@@ -92,11 +92,11 @@
     
     PontoManager *pontoManager = [PontoManager sharedInstance];
     
-    NSString *hora = [self safeTimeUnity:self.hours.text WithTimeType:@"hour"];
-    NSString *minutos = [self safeTimeUnity:self.minutes.text WithTimeType:@"minute"];
+    NSString *hour = [self safeTimeUnity:self.hours.text WithTimeType:@"hour"];
+    NSString *minute = [self safeTimeUnity:self.minutes.text WithTimeType:@"minute"];
     NSString *day = [pontoManager currentDate];
     
-    [pontoManager addPontoWithDay:day AndHour:hora AndMinute:minutos AndType:type];
+    [pontoManager addPontoWithDay:day AndHour:hour AndMinute:minute AndType:type];
     
 }
 

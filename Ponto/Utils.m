@@ -132,10 +132,6 @@ static id _instance;
         [minutesListInt addObject:[NSNumber numberWithInteger:total]];
     }
     
-    //NSSortDescriptor *sortDescriptor;
-    //sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:NO];
-    //NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-    //NSArray *sortedArray = [minutesListInt sortedArrayUsingDescriptors:sortDescriptors];
     int totalMinutes = 0;
     for (int i = 0; i < minutesListInt.count; i++) {
         totalMinutes = totalMinutes + [[minutesListInt objectAtIndex:i] integerValue];

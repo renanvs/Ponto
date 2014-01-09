@@ -11,25 +11,25 @@
 #import "DayModel.h"
 
 @interface PontoManager : NSObject{
-    NSManagedObjectContext *contexto;
+    NSManagedObjectContext *context;
     NSString *currentDate;
-    NSString *nextDate;
-    NSString *beforeDate;
+    NSString *followingDate;
+    NSString *previousDate;
     NSString *currentHourWorked;
     ViewType currentViewType;
 }
 
-@property (readonly ,strong) NSManagedObjectContext *contexto;;
+@property (readonly ,strong) NSManagedObjectContext *context;;
 @property (nonatomic, assign) NSString *currentDate;
-@property (nonatomic, assign) NSString *nextDate;
-@property (nonatomic, assign) NSString *beforeDate;
+@property (nonatomic, assign) NSString *followingDate;
+@property (nonatomic, assign) NSString *previousDate;
 @property (nonatomic, assign) NSString *currentHourWorked;
 @property (nonatomic, assign) ViewType currentViewType;
 
 -(void)addPontoWithDay:(NSString*)day AndHour:(NSString*)hour AndMinute:(NSString*)minute AndType:(PointType)type;
 
--(void)getDayAfter;
--(void)getDayBefore;
+-(void)getFollowingDay;
+-(void)getPreviousDay;
 
 -(NSString*)sumDayTime:(NSArray*)dayList;
 

@@ -32,25 +32,25 @@
 -(void)refreshLabels{
     PontoManager *pontoManager = [PontoManager sharedInstance];
     
-    [self.buttonBeforeDay setTitle:pontoManager.beforeDate forState:UIControlStateNormal];
-    [self.buttonAfterDay setTitle:pontoManager.nextDate forState:UIControlStateNormal];
+    [self.buttonPreviousDay setTitle:pontoManager.previousDate forState:UIControlStateNormal];
+    [self.buttonFollowingDay setTitle:pontoManager.followingDate forState:UIControlStateNormal];
     [self.labelCurrentDay setText:pontoManager.currentDate];
     
-    [self.labelDescriptionResult setText:pontoManager.currentHourWorked];
+    [self.labelResult setText:pontoManager.currentHourWorked];
 }
 
 #pragma mark - IBAction's
 
 - (IBAction)goToBackDay:(id)sender{
     [[NSNotificationCenter defaultCenter]postNotificationName:NotificationRemoveKeyboard object:nil];
-    [[PontoManager sharedInstance] getDayBefore];
+    [[PontoManager sharedInstance] getPreviousDay];
     [tableViewPontoDayList reloadData];
     [self refreshLabels];
 }
 
 - (IBAction)goToForwardDay:(id)sender{
     [[NSNotificationCenter defaultCenter]postNotificationName:NotificationRemoveKeyboard object:nil];
-    [[PontoManager sharedInstance] getDayAfter];
+    [[PontoManager sharedInstance] getFollowingDay];
     [tableViewPontoDayList reloadData];
     [self refreshLabels];
 }

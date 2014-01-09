@@ -14,11 +14,11 @@
 }
 
 @property (assign, nonatomic) IBOutlet UILabel *labelCurrentDay;
-@property (assign, nonatomic) IBOutlet UIButton *buttonBeforeDay;
-@property (assign, nonatomic) IBOutlet UIButton *buttonAfterDay;
+@property (assign, nonatomic) IBOutlet UIButton *buttonPreviousDay;
+@property (assign, nonatomic) IBOutlet UIButton *buttonFollowingDay;
 
 @property (assign, nonatomic) IBOutlet UILabel *labelDescription;
-@property (assign, nonatomic) IBOutlet UILabel *labelDescriptionResult;
+@property (assign, nonatomic) IBOutlet UILabel *labelResult;
 
 - (IBAction)goToBackDay:(id)sender;
 - (IBAction)goToForwardDay:(id)sender;

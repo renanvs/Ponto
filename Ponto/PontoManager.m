@@ -10,7 +10,7 @@
 
 @implementation PontoManager
 
-@synthesize contexto, currentDate, beforeDate, nextDate, currentViewType, currentHourWorked;
+@synthesize context, currentDate, previousDate, followingDate, currentViewType, currentHourWorked;
 
 static id _instance;
 
@@ -27,7 +27,7 @@ static id _instance;
     self = [super init];
     
     if (self) {
-        [self contexto];
+        [self context];
         currentViewType = ViewBlankType;
         [self setDates];
     }
@@ -36,29 +36,29 @@ static id _instance;
 }
 
 -(void)setDates{
-    currentDate = [[NSString alloc ] initWithString:[self getDayByDayDelay:0]];
-    nextDate =  [[NSString alloc ] initWithString:[self getDayByDayDelay:1]];
-    beforeDate = [[NSString alloc ] initWithString:[self getDayByDayDelay:-1]];
+    currentDate = [[NSString alloc ] initWithString:[self getDateByDayDelay:0]];
+    followingDate =  [[NSString alloc ] initWithString:[self getDateByDayDelay:1]];
+    previousDate = [[NSString alloc ] initWithString:[self getDateByDayDelay:-1]];
     [self timeInfo];
 }
 
--(NSString *)getDayByDayDelay:(int)delay{
+-(NSString *)getDateByDayDelay:(int)delay{
     NSString *dateStr = nil;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd/MM/yyyy"];
     NSDateComponents *component = [[NSDateComponents alloc] init];
     [component setDay:delay];
     
-    NSDate *currentDay = nil;
+    NSDate *date = nil;
     
     if (!currentDate) {
-        currentDay= [NSDate date];
+        date= [NSDate date];
     }else{
-        currentDay = [formatter dateFromString:currentDate];
+        date = [formatter dateFromString:currentDate];
     }
     
     
-    NSDate *dayFormated = [[NSCalendar currentCalendar] dateByAddingComponents:component toDate:currentDay options:0];
+    NSDate *dayFormated = [[NSCalendar currentCalendar] dateByAddingComponents:component toDate:date options:0];
     dateStr = [formatter stringFromDate:dayFormated];
 
     return dateStr;
@@ -68,32 +68,32 @@ static id _instance;
 -(void)addPontoWithDay:(NSString*)day AndHour:(NSString*)hour AndMinute:(NSString*)minute AndType:(PointType)type{
     DayModel *dayModel = [self getDayModel:day];
     
-    [self getPontoModelWithHour:hour withMinute:minute AndDayModel:dayModel AndType:type];
+    [self setPontoModelWithHour:hour withMinute:minute AndDayModel:dayModel AndType:type];
     
     [self saveContext];
 }
 
 -(void)timeInfo{
-    NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:self.contexto];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:self.context];
     NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
     request.entity = entity;
-    NSArray *result = [self.contexto executeFetchRequest:request error:nil];
+    NSArray *result = [self.context executeFetchRequest:request error:nil];
     
-    NSMutableArray *currentDayPontosList = [[NSMutableArray alloc] init];
+    NSMutableArray *currentDayPontoList = [[NSMutableArray alloc] init];
     for (PontoModel *pm in result) {
         if ([pm.day.date isEqualToString:currentDate]) {
-            [currentDayPontosList addObject:pm];
+            [currentDayPontoList addObject:pm];
         }
     }
     
-    PontoStatus pontoStatus = [self getPontoTypeByDayList:currentDayPontosList];
+    PontoStatus pontoStatus = [self getPontoTypeByDayList:currentDayPontoList];
     
     if (pontoStatus == PontoStatusDayInBlank) {
         currentHourWorked = @"00:00";
     }else if (pontoStatus == PontoStatusError) {
         currentHourWorked = @"error";
     }else if ((pontoStatus == PontoStatusStillWorking) || (pontoStatus == PontoStatusDayWorked)) {
-        currentHourWorked = [[NSString alloc] initWithString:[self sumDayTime:currentDayPontosList]];
+        currentHourWorked = [[NSString alloc] initWithString:[self sumDayTime:currentDayPontoList]];
     }
     
 }
@@ -156,13 +156,13 @@ static id _instance;
     
 }
 
--(void)getPontoModelWithHour:(NSString*)hour withMinute:(NSString*)minute AndDayModel:(DayModel*)dayModel AndType:(PointType)type{
+-(void)setPontoModelWithHour:(NSString*)hour withMinute:(NSString*)minute AndDayModel:(DayModel*)dayModel AndType:(PointType)type{
     
-    NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:self.contexto];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:self.context];
     NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
     request.entity = entity;
     
-    NSArray *result = [self.contexto executeFetchRequest:request error:nil];
+    NSArray *result = [self.context executeFetchRequest:request error:nil];
     
     if (result.count > 0){
         for (PontoModel *pm in result) {
@@ -173,22 +173,22 @@ static id _instance;
         }
     }
     
-    PontoModel *pontoModel = (PontoModel*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:self.contexto];
+    PontoModel *pontoModel = (PontoModel*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:self.context];
     
     pontoModel.hour = [[NSString alloc] initWithFormat:@"%@:%@", hour, minute];
     pontoModel.type = [NSNumber numberWithInt:type];
     
-    [self.contexto insertObject:pontoModel];
+    [self.context insertObject:pontoModel];
     
     pontoModel.day = dayModel;
     
 }
 
 -(DayModel*)getDayModel:(NSString*)day{
-    NSEntityDescription *entity = [NSEntityDescription entityForName:DayModelEntity inManagedObjectContext:self.contexto];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:DayModelEntity inManagedObjectContext:self.context];
     NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
     request.entity = entity;
-    NSArray *result = [self.contexto executeFetchRequest:request error:nil];
+    NSArray *result = [self.context executeFetchRequest:request error:nil];
     
     if (result.count > 0){
         for (DayModel *dm in result) {
@@ -198,7 +198,7 @@ static id _instance;
         }
     }
     
-    DayModel *dm = [NSEntityDescription insertNewObjectForEntityForName:DayModelEntity inManagedObjectContext:contexto];
+    DayModel *dm = [NSEntityDescription insertNewObjectForEntityForName:DayModelEntity inManagedObjectContext:context];
     
     dm.date = day;
     
@@ -206,11 +206,11 @@ static id _instance;
 }
 
 -(void)getPontoModel:(PontoModel*)ponto withDay:(DayModel*)day{
-    NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:self.contexto];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:self.context];
     NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
     request.entity = entity;
     
-    NSArray *result = [self.contexto executeFetchRequest:request error:nil];
+    NSArray *result = [self.context executeFetchRequest:request error:nil];
     
     if (result.count > 0){
         for (PontoModel *pm in result) {
@@ -221,7 +221,7 @@ static id _instance;
         }
     }
     
-    [self.contexto insertObject:ponto];
+    [self.context insertObject:ponto];
     
     ponto.day = day;
     
@@ -229,7 +229,7 @@ static id _instance;
 
 -(void)saveContext{
     NSError *error;
-    if (![contexto save:&error]) {
+    if (![context save:&error]) {
         NSDictionary *informacoes = [error userInfo];
         NSArray *multiplosError = [informacoes objectForKey:NSDetailedErrorsKey];
         if (multiplosError) {
@@ -265,25 +265,25 @@ static id _instance;
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
--(NSManagedObjectContext *)contexto{
-    if (contexto != nil) {
-        return contexto;
+-(NSManagedObjectContext *)context{
+    if (context != nil) {
+        return context;
     }
     
     NSPersistentStoreCoordinator *coordinator = [self coordinator];
-    contexto = [[NSManagedObjectContext alloc] init];
-    [contexto setPersistentStoreCoordinator:coordinator];
-    return contexto;
+    context = [[NSManagedObjectContext alloc] init];
+    [context setPersistentStoreCoordinator:coordinator];
+    return context;
 }
 
 
--(void)getDayAfter{
-    currentDate = nextDate;
+-(void)getFollowingDay{
+    currentDate = followingDate;
     [self setDates];
 }
 
--(void)getDayBefore{
-    currentDate = beforeDate;
+-(void)getPreviousDay{
+    currentDate = previousDate;
     [self setDates];
 }
 

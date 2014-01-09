@@ -28,7 +28,7 @@ static id _instance;
     self = [super init];
     
     if (self) {
-        context = [[PontoManager sharedInstance]contexto];
+        context = [[PontoManager sharedInstance]context];
         currentMonthList = [[NSMutableArray alloc] init];
         [self getMonthListByDate:[[Utils sharedinstance] currentDate]];
         [self setDates];

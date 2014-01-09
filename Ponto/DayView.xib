@@ -64,11 +64,11 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="buttonAfterDay" destination="hN0-SS-ptl" id="gy0-SI-ayF"/>
-                <outlet property="buttonBeforeDay" destination="vlQ-gq-gYj" id="LaU-uB-OAi"/>
+                <outlet property="buttonFollowingDay" destination="hN0-SS-ptl" id="Zcx-ab-637"/>
+                <outlet property="buttonPreviousDay" destination="vlQ-gq-gYj" id="2Oc-Cc-kIV"/>
                 <outlet property="labelCurrentDay" destination="dfw-80-nTD" id="JcA-eR-D7g"/>
                 <outlet property="labelDescription" destination="QbD-23-D4S" id="GiY-kv-hmd"/>
-                <outlet property="labelDescriptionResult" destination="IGH-5K-bNL" id="hrn-W2-SqO"/>
+                <outlet property="labelResult" destination="IGH-5K-bNL" id="DjH-dg-llI"/>
                 <outlet property="tableViewPontoDayList" destination="IzS-1U-OJ7" id="lvR-3s-SmZ"/>
             </connections>
         </view>
