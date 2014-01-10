@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="0BH-LL-rBB" customClass="MonthView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="428"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="or5-0a-MV1">
                     <rect key="frame" x="0.0" y="59" width="320" height="300"/>
@@ -67,7 +67,6 @@
                 <outlet property="buttonFollowingMonth" destination="hIa-Vk-xRo" id="N4C-wo-Trf"/>
                 <outlet property="buttonPreviousMonth" destination="p7w-21-EZC" id="jEh-H1-m5s"/>
                 <outlet property="labelCurrentMonth" destination="5Qh-Tx-7t3" id="oo4-M4-qN3"/>
-                <outlet property="labelDescription" destination="5h4-RX-LkX" id="rh6-sq-eZj"/>
                 <outlet property="labelResult" destination="yj4-Sv-aI3" id="p12-C1-4ly"/>
                 <outlet property="tableViewPontoMonthList" destination="or5-0a-MV1" id="tAv-R8-V6x"/>
             </connections>

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PontoManager.h"
 
 @interface MonthView : UIView <UITableViewDataSource, UITableViewDelegate>{
     IBOutlet UITableView *tableViewPontoMonthList;

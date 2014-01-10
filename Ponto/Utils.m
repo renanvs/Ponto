@@ -70,6 +70,9 @@ static id _instance;
     
     CGFloat newDate = [dateOut timeIntervalSinceDate:dateIn]/60;
     
+    if (newDate < 0) {
+        return @"error";
+    }
     
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
     dateComponents.minute = [[NSString stringWithFormat:@"%f",newDate] intValue];

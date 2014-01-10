@@ -24,10 +24,22 @@
     return self;
 }
 
--(void)didMoveToWindow{
-    [[MonthManager sharedinstance] refresh];
-    [self refreshLabels];
+-(void)didAddSubview:(UIView *)subview{
+    NSLog(@"Month Add");
 }
+
+-(void)didMoveToSuperview{
+    if ([PontoManager sharedInstance].currentViewType == ViewMonthType){
+        [[MonthManager sharedinstance] refresh];
+        [self refreshLabels];
+    }
+    NSLog(@"Month Move S");
+}
+
+-(void)didMoveToWindow{
+    NSLog(@"Month Move W");
+}
+
 
 -(void)addObservers{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshLabels) name:NotificationContextSaved object:nil];
@@ -41,6 +53,7 @@
     [self.labelCurrentMonth setText:monthManager.currentMonth];
     
     [self.labelResult setText:[NSString stringWithFormat:@"%@ horas",monthManager.currentTotalMonthHours]];
+    [tableViewPontoMonthList reloadData];
 }
 
 #pragma mark - IBAction's

@@ -14,6 +14,8 @@
     DayView *dayView;
     MonthView *monthView;
     
+    IBOutlet UIView *viewContainer;
+    
     BOOL hasObservers;
     UIButton *closeKeyboardButton;
 }

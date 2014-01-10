@@ -10,6 +10,7 @@
                 <outlet property="monthItem" destination="gF7-bu-4Na" id="1Vg-wx-hNA"/>
                 <outlet property="tabBar" destination="smA-gg-0yH" id="qRK-xo-BL1"/>
                 <outlet property="view" destination="RJJ-D3-8H8" id="MLb-TO-8Pq"/>
+                <outlet property="viewContainer" destination="PiR-qV-lHl" id="i1M-5G-1Na"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -29,6 +30,11 @@
                         <outlet property="delegate" destination="-1" id="oS3-qR-pzn"/>
                     </connections>
                 </tabBar>
+                <view contentMode="scaleToFill" id="PiR-qV-lHl">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>

@@ -68,7 +68,7 @@ static id _instance;
     
     NSArray *result = [context executeFetchRequest:request error:nil];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"data"
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date"
                                                  ascending:YES];
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     NSArray *resultSorted = [result sortedArrayUsingDescriptors:sortDescriptors];

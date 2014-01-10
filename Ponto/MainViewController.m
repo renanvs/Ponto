@@ -32,9 +32,9 @@
     
     if ([PontoManager sharedInstance].currentViewType == ViewBlankType) {
         dayView = [[[NSBundle mainBundle] loadNibNamed:@"DayView" owner:self options:nil] objectAtIndex:0];
-        [dayView refreshLabels];
-        [self.view addSubview:dayView];
         [PontoManager sharedInstance].currentViewType = ViewDayType;
+        //[dayView refreshLabels];
+        [viewContainer addSubview:dayView];
     }else{
         NSLog(@"failed to load view");
     }
@@ -93,20 +93,19 @@
 
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     if (item == self.dayItem) {
-        if (!dayView) dayView = [[[NSBundle mainBundle] loadNibNamed:@"DayView" owner:self options:nil] objectAtIndex:0];
-        [dayView refreshLabels];
-        
-        [self.view addSubview:dayView];
+        if (!dayView){
+            dayView = [[[NSBundle mainBundle] loadNibNamed:@"DayView" owner:self options:nil] objectAtIndex:0];
+        }
         [PontoManager sharedInstance].currentViewType = ViewDayType;
+        [viewContainer addSubview:dayView];
+        [self removeSubviewsExceptionView:dayView];
     }else if (item == self.monthItem) {
-        if (!monthView) {
+        if (!monthView){
             monthView = [[[NSBundle mainBundle] loadNibNamed:@"MonthView" owner:self options:nil] objectAtIndex:0];
         }
-        
-        [self.view addSubview:monthView];
-        [monthView refreshLabels];
-        
         [PontoManager sharedInstance].currentViewType = ViewMonthType;
+        [viewContainer addSubview:monthView];
+        [self removeSubviewsExceptionView:monthView];
     }else{
         [PontoManager sharedInstance].currentViewType = ViewOtherType;
     }
@@ -117,4 +116,14 @@
     [_monthItem release];
     [super dealloc];
 }
+
+-(void)removeSubviewsExceptionView:(UIView*)viewE{
+    for (UIView *view in viewContainer.subviews) {
+        if ((view != viewE) && (view.superview != nil)) {
+            [view retain];
+            [view removeFromSuperview];
+        }
+    }
+}
+
 @end

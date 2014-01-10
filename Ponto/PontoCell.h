@@ -24,4 +24,6 @@
 
 - (IBAction)action:(id)sender;
 
+-(void)addInfoToModel;
+
 @end

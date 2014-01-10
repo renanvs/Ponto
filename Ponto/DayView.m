@@ -25,6 +25,20 @@
     return self;
 }
 
+-(void)didAddSubview:(UIView *)subview{
+    NSLog(@"Day Add");
+}
+
+-(void)didMoveToSuperview{
+    if ([PontoManager sharedInstance].currentViewType == ViewDayType){
+        [self refreshLabels];
+    }
+}
+
+-(void)didMoveToWindow{
+    NSLog(@"Day Move W");
+}
+
 -(void)addObservers{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshLabels) name:NotificationContextSaved object:nil];
 }
@@ -53,6 +67,14 @@
     [[PontoManager sharedInstance] getFollowingDay];
     [tableViewPontoDayList reloadData];
     [self refreshLabels];
+}
+
+-(void)AddAll:(id)sender{
+    NSArray *cells = [tableViewPontoDayList visibleCells];
+    
+    for (PontoCell *cell in cells) {
+        [cell addInfoToModel];
+    }
 }
 
 #pragma mark - tableViewDelegate

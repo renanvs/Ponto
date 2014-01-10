@@ -22,6 +22,7 @@
 
 - (IBAction)goToBackDay:(id)sender;
 - (IBAction)goToForwardDay:(id)sender;
+- (IBAction)AddAll:(id)sender;
 - (void)refreshLabels; 
 
 

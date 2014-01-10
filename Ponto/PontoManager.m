@@ -156,6 +156,47 @@ static id _instance;
     
 }
 
+-(BOOL)validatePreviousValueWithTime:(NSString*)time AndType:(PointType)type{
+    PointType typeToVerify = type -1;
+    
+    if (type == PointEntraceType) {
+        return YES;
+    }
+    
+    NSString *timeToVerify = [self getTimeByDate:currentDate AndType:typeToVerify];
+    
+    if ([NSString isStringEmpty:timeToVerify]) return YES;
+    
+    NSString *result = [[Utils sharedinstance] getTotalHoursSubtractByTimeIn:timeToVerify AndTimeOut:time];
+    NSRange range = [result rangeOfString:@"error"];
+    
+    if (range.length > 0) {
+        return NO;
+    }
+    
+    
+    return YES;
+}
+
+-(NSString*)getTimeByDate:(NSString*)date AndType:(PointType)type{
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:self.context];
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    request.entity = entity;
+    NSArray *result = [self.context executeFetchRequest:request error:nil];
+    
+    for (PontoModel *pm in result) {
+        BOOL dateValidate = [pm.day.date isEqualToString:date];
+        BOOL typeValidate = (pm.type == [NSNumber numberWithInt:type]) ;
+        
+        if (dateValidate && typeValidate) {
+            return pm.hour;
+        }
+    }
+    
+    return nil;
+}
+
 -(void)setPontoModelWithHour:(NSString*)hour withMinute:(NSString*)minute AndDayModel:(DayModel*)dayModel AndType:(PointType)type{
     
     NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:self.context];
@@ -163,11 +204,17 @@ static id _instance;
     request.entity = entity;
     
     NSArray *result = [self.context executeFetchRequest:request error:nil];
+    NSString *time = [NSString stringWithFormat:@"%@:%@", hour, minute];
+    
+    if (![self validatePreviousValueWithTime:time AndType:type]){
+        [[[UIAlertView alloc] initWithTitle:@"Atenção" message:@"Hora inferior a anterior" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        return;
+    }
     
     if (result.count > 0){
         for (PontoModel *pm in result) {
             if ((pm.day == dayModel) && (pm.type == [NSNumber numberWithInt:type])) {
-                pm.hour = [NSString stringWithFormat:@"%@:%@", hour, minute];
+                pm.hour = time;
                 return;
             }
         }

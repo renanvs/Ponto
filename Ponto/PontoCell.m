@@ -85,7 +85,7 @@
 
 - (IBAction)action:(id)sender{
     [self addInfoToModel];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationRemoveKeyboard object:nil];
+    
 }
 
 -(void)addInfoToModel{
@@ -98,6 +98,7 @@
     
     [pontoManager addPontoWithDay:day AndHour:hour AndMinute:minute AndType:type];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationRemoveKeyboard object:nil];
 }
 
 -(NSString*)safeTimeUnity:(NSString*)timeUnity WithTimeType:(NSString*)timeType{
