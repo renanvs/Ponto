@@ -26,6 +26,12 @@
 		1E904CCA187F7151003C4105 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E904CC8187F7151003C4105 /* AppDelegate.m */; };
 		1E904CCB187F7151003C4105 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E904CC9187F7151003C4105 /* main.m */; };
 		1E904CD1187F715B003C4105 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1E904CCD187F715B003C4105 /* InfoPlist.strings */; };
+		1EA80A0F187F8B710056E299 /* baseBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA80A09187F8B710056E299 /* baseBar.png */; };
+		1EA80A10187F8B710056E299 /* baseBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA80A0A187F8B710056E299 /* baseBar@2x.png */; };
+		1EA80A11187F8B710056E299 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA80A0B187F8B710056E299 /* clock.png */; };
+		1EA80A12187F8B710056E299 /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA80A0C187F8B710056E299 /* clock@2x.png */; };
+		1EA80A13187F8B710056E299 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA80A0D187F8B710056E299 /* list.png */; };
+		1EA80A14187F8B710056E299 /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA80A0E187F8B710056E299 /* list@2x.png */; };
 		1EB759F7186500CC00845DCE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB759F6186500CC00845DCE /* Foundation.framework */; };
 		1EB759F9186500CC00845DCE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB759F8186500CC00845DCE /* CoreGraphics.framework */; };
 		1EB759FB186500CC00845DCE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB759FA186500CC00845DCE /* UIKit.framework */; };
@@ -65,6 +71,12 @@
 		1E904CCE187F715B003C4105 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		1E904CCF187F715B003C4105 /* Ponto-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Ponto-Info.plist"; path = "Ponto/Ponto/Ponto-Info.plist"; sourceTree = "<group>"; };
 		1E904CD0187F715B003C4105 /* Ponto-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Ponto-Prefix.pch"; path = "Ponto/Ponto/Ponto-Prefix.pch"; sourceTree = "<group>"; };
+		1EA80A09187F8B710056E299 /* baseBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baseBar.png; sourceTree = "<group>"; };
+		1EA80A0A187F8B710056E299 /* baseBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baseBar@2x.png"; sourceTree = "<group>"; };
+		1EA80A0B187F8B710056E299 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		1EA80A0C187F8B710056E299 /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
+		1EA80A0D187F8B710056E299 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
+		1EA80A0E187F8B710056E299 /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
 		1EB759F3186500CC00845DCE /* Ponto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ponto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EB759F6186500CC00845DCE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1EB759F8186500CC00845DCE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -203,6 +215,12 @@
 				1E904CA3187F713C003C4105 /* MainViewController */,
 				1E904CA7187F713C003C4105 /* Manager */,
 				1E904CAE187F713C003C4105 /* MonthView */,
+				1EA80A09187F8B710056E299 /* baseBar.png */,
+				1EA80A0A187F8B710056E299 /* baseBar@2x.png */,
+				1EA80A0B187F8B710056E299 /* clock.png */,
+				1EA80A0C187F8B710056E299 /* clock@2x.png */,
+				1EA80A0D187F8B710056E299 /* list.png */,
+				1EA80A0E187F8B710056E299 /* list@2x.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -277,11 +295,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EA80A11187F8B710056E299 /* clock.png in Resources */,
 				1E904CC3187F713C003C4105 /* MonthCell.xib in Resources */,
 				1E904CD1187F715B003C4105 /* InfoPlist.strings in Resources */,
+				1EA80A0F187F8B710056E299 /* baseBar.png in Resources */,
+				1EA80A14187F8B710056E299 /* list@2x.png in Resources */,
+				1EA80A10187F8B710056E299 /* baseBar@2x.png in Resources */,
+				1EA80A12187F8B710056E299 /* clock@2x.png in Resources */,
 				1E904CC5187F713C003C4105 /* MonthView.xib in Resources */,
 				1E904CBC187F713C003C4105 /* PontoCell.xib in Resources */,
 				1E904CBE187F713C003C4105 /* MainViewController.xib in Resources */,
+				1EA80A13187F8B710056E299 /* list.png in Resources */,
 				1E904CBA187F713C003C4105 /* DayView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

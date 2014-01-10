@@ -10,7 +10,7 @@
 #import "DayView.h"
 #import "MonthView.h"
 
-@interface MainViewController : UIViewController<UITabBarControllerDelegate, UITabBarDelegate>{
+@interface MainViewController : UIViewController{
     DayView *dayView;
     MonthView *monthView;
     
@@ -20,9 +20,9 @@
     UIButton *closeKeyboardButton;
 }
 
-@property (assign, nonatomic) IBOutlet UITabBar *tabBar;
-@property (retain, nonatomic) IBOutlet UITabBarItem *dayItem;
-@property (retain, nonatomic) IBOutlet UITabBarItem *monthItem;
+@property (retain, nonatomic) IBOutlet UIButton *buttonDay;
+@property (retain, nonatomic) IBOutlet UIButton *buttonMonthList;
 
+-(IBAction)buttonAction:(id)sender;
 
 @end

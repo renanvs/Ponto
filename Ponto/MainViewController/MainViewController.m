@@ -27,6 +27,23 @@
     return self;
 }
 
+-(void)adjustViewButtons{
+    
+    ViewType type = [PontoManager sharedInstance].currentViewType;
+    
+    if (type == ViewDayType) {
+        [self.buttonDay setAlpha:0.5];
+        [self.buttonMonthList setAlpha:1];
+    }else if (type == ViewMonthType){
+        [self.buttonDay setAlpha:1];
+        [self.buttonMonthList setAlpha:0.5];
+    }else{
+        [self.buttonDay setAlpha:1];
+        [self.buttonMonthList setAlpha:1];
+    }
+    
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
@@ -38,6 +55,8 @@
     }else{
         NSLog(@"failed to load view");
     }
+    
+    [self adjustViewButtons];
     
 }
 
@@ -91,15 +110,15 @@
 
 #pragma mark - tabBarDelegate
 
--(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
-    if (item == self.dayItem) {
+-(IBAction)buttonAction:(id)sender{
+    if (sender == self.buttonDay) {
         if (!dayView){
             dayView = [[[NSBundle mainBundle] loadNibNamed:@"DayView" owner:self options:nil] objectAtIndex:0];
         }
         [PontoManager sharedInstance].currentViewType = ViewDayType;
         [viewContainer addSubview:dayView];
         [self removeSubviewsExceptionView:dayView];
-    }else if (item == self.monthItem) {
+    }else if (sender == self.buttonMonthList) {
         if (!monthView){
             monthView = [[[NSBundle mainBundle] loadNibNamed:@"MonthView" owner:self options:nil] objectAtIndex:0];
         }
@@ -109,11 +128,13 @@
     }else{
         [PontoManager sharedInstance].currentViewType = ViewOtherType;
     }
+    
+    [self adjustViewButtons];
 }
 
 - (void)dealloc {
-    [_dayItem release];
-    [_monthItem release];
+    [_buttonDay release];
+    [_buttonMonthList release];
     [super dealloc];
 }
 
