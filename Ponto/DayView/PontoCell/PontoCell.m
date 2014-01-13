@@ -13,25 +13,7 @@
 
 @synthesize date, type;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
--(id)init{
-    self = [super init];
-    
-    if (self){
-        
-    }
-    
-    return self;
-}
-
+#pragma mark - set Type
 -(void)setType:(PointType)typeR{
     if (typeR == 0) {
         self.typeLabel.text = @"Entrada";
@@ -48,11 +30,13 @@
     [self setDefault];
 }
 
+#pragma mark - dafault Method
 -(void)setDefault{
     self.hours.keyboardType = UIKeyboardTypeNumberPad;
     self.minutes.keyboardType = UIKeyboardTypeNumberPad;
 }
 
+#pragma mark - load info
 -(void)populateInfo{
     PontoManager *pontoManager = [PontoManager sharedInstance];
     NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:pontoManager.context];
@@ -76,18 +60,7 @@
     
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
-- (IBAction)action:(id)sender{
-    [self addInfoToModel];
-    
-}
-
+#pragma mark - add info
 -(void)addInfoToModel{
     
     PontoManager *pontoManager = [PontoManager sharedInstance];
@@ -101,15 +74,22 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationRemoveKeyboard object:nil];
 }
 
+#pragma mark - IBAction's
+- (IBAction)action:(id)sender{
+    [self addInfoToModel];
+    
+}
+
+#pragma mark - auxiliar methods
 -(NSString*)safeTimeUnity:(NSString*)timeUnity WithTimeType:(NSString*)timeType{
     //verifica se é vazia ou não é numerica ou tamanho maior que 2
-    BOOL validate = (([NSString isStringEmpty:timeUnity]) || (![[Utils sharedinstance]isStringWithNumeric:timeUnity]) || ([timeUnity length] > 2));
+    BOOL validate = (([NSString isStringEmpty:timeUnity]) || (![NSString isStringWithNumeric:timeUnity]) || ([timeUnity length] > 2));
     
     if (validate) {
         return @"--";
     }
     
-    if ([timeUnity length] == 1 && [[Utils sharedinstance] isStringWithNumeric:timeUnity]) {
+    if ([timeUnity length] == 1 && [NSString isStringWithNumeric:timeUnity]) {
         return [NSString stringWithFormat:@"0%@",timeUnity];
     }
     
@@ -130,7 +110,6 @@
 }
 
 #pragma mark - textFieldDelegate
-
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self addInfoToModel];
     return YES;
@@ -142,19 +121,17 @@
     }else if (textField == self.minutes){
         textField.text = [self safeTimeUnity:textField.text WithTimeType:@"minute"];
     }
-    
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     NSRange rangeError = [textField.text rangeOfString:@"Er"];
     NSRange rangeNew = [textField.text rangeOfString:@"--"];
     
-    bool validateToClean = (rangeError.length > 0) || (rangeNew.length > 0) || (textField.text.length > 2) || !([[Utils sharedinstance]isStringWithNumeric:textField.text]);
+    bool validateToClean = (rangeError.length > 0) || (rangeNew.length > 0) || (textField.text.length > 2) || !([NSString isStringWithNumeric:textField.text]);
     
     if (validateToClean) {
         textField.text = @"";
     }
-    
 }
 
 @end

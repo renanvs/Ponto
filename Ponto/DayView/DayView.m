@@ -25,32 +25,14 @@
     return self;
 }
 
--(void)didAddSubview:(UIView *)subview{
-    NSLog(@"Day Add");
-}
-
 -(void)didMoveToSuperview{
     if ([PontoManager sharedInstance].currentViewType == ViewDayType){
         [self refreshLabels];
     }
 }
 
--(void)didMoveToWindow{
-    NSLog(@"Day Move W");
-}
-
 -(void)addObservers{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshLabels) name:NotificationContextSaved object:nil];
-}
-
--(void)refreshLabels{
-    PontoManager *pontoManager = [PontoManager sharedInstance];
-    
-    [self.buttonPreviousDay setTitle:pontoManager.previousDate forState:UIControlStateNormal];
-    [self.buttonFollowingDay setTitle:pontoManager.followingDate forState:UIControlStateNormal];
-    [self.labelCurrentDay setText:pontoManager.currentDate];
-    
-    [self.labelResult setText:pontoManager.currentHourWorked];
 }
 
 #pragma mark - IBAction's
@@ -69,7 +51,7 @@
     [self refreshLabels];
 }
 
--(void)AddAll:(id)sender{
+-(IBAction)AddAll:(id)sender{
     NSArray *cells = [tableViewPontoDayList visibleCells];
     
     for (PontoCell *cell in cells) {
@@ -101,6 +83,17 @@
     return 4;
 }
 
+#pragma mark - auxiliar methods
+
+-(void)refreshLabels{
+    PontoManager *pontoManager = [PontoManager sharedInstance];
+    
+    [self.buttonPreviousDay setTitle:pontoManager.previousDate forState:UIControlStateNormal];
+    [self.buttonFollowingDay setTitle:pontoManager.followingDate forState:UIControlStateNormal];
+    [self.labelCurrentDay setText:pontoManager.currentDate];
+    
+    [self.labelResult setText:pontoManager.currentHourWorked];
+}
 
 -(PointType)getTypeByIndex:(int)index{
     PointType type;
@@ -122,6 +115,8 @@
     
     return type;
 }
+
+#pragma mark - finish methods
 
 -(void)dealloc{
     [super dealloc];

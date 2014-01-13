@@ -12,8 +12,8 @@
 
 @synthesize context, currentDate, previousDate, followingDate, currentViewType, currentHourWorked;
 
+#pragma mark - initial method's
 static id _instance;
-
 + (PontoManager *) sharedInstance{
     @synchronized(self){
         if (!_instance) {
@@ -35,13 +35,57 @@ static id _instance;
     return self;
 }
 
+#pragma mark - setters method's
 -(void)setDates{
     currentDate = [[NSString alloc ] initWithString:[self getDateByDayDelay:0]];
     followingDate =  [[NSString alloc ] initWithString:[self getDateByDayDelay:1]];
     previousDate = [[NSString alloc ] initWithString:[self getDateByDayDelay:-1]];
-    [self timeInfo];
+    [self getTimeInfo];
 }
 
+-(void)addPontoWithDay:(NSString*)day AndHour:(NSString*)hour AndMinute:(NSString*)minute AndType:(PointType)type{
+    DayModel *dayModel = [self getDayModel:day];
+    
+    [self setPontoModelWithHour:hour withMinute:minute AndDayModel:dayModel AndType:type];
+    
+    [self saveContext];
+}
+
+-(void)setPontoModelWithHour:(NSString*)hour withMinute:(NSString*)minute AndDayModel:(DayModel*)dayModel AndType:(PointType)type{
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:self.context];
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    request.entity = entity;
+    
+    NSArray *result = [self.context executeFetchRequest:request error:nil];
+    NSString *time = [NSString stringWithFormat:@"%@:%@", hour, minute];
+    
+    if (![self validatePreviousValueWithTime:time AndType:type]){
+        [[[UIAlertView alloc] initWithTitle:@"Atenção" message:@"Hora inferior a anterior" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        return;
+    }
+    
+    if (result.count > 0){
+        for (PontoModel *pm in result) {
+            if ((pm.day == dayModel) && (pm.type == [NSNumber numberWithInt:type])) {
+                pm.hour = time;
+                return;
+            }
+        }
+    }
+    
+    PontoModel *pontoModel = (PontoModel*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:self.context];
+    
+    pontoModel.hour = [[NSString alloc] initWithFormat:@"%@:%@", hour, minute];
+    pontoModel.type = [NSNumber numberWithInt:type];
+    
+    [self.context insertObject:pontoModel];
+    
+    pontoModel.day = dayModel;
+    
+}
+
+#pragma mark - getters method's
 -(NSString *)getDateByDayDelay:(int)delay{
     NSString *dateStr = nil;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -57,7 +101,6 @@ static id _instance;
         date = [formatter dateFromString:currentDate];
     }
     
-    
     NSDate *dayFormated = [[NSCalendar currentCalendar] dateByAddingComponents:component toDate:date options:0];
     dateStr = [formatter stringFromDate:dayFormated];
 
@@ -65,15 +108,7 @@ static id _instance;
     
 }
 
--(void)addPontoWithDay:(NSString*)day AndHour:(NSString*)hour AndMinute:(NSString*)minute AndType:(PointType)type{
-    DayModel *dayModel = [self getDayModel:day];
-    
-    [self setPontoModelWithHour:hour withMinute:minute AndDayModel:dayModel AndType:type];
-    
-    [self saveContext];
-}
-
--(void)timeInfo{
+-(void)getTimeInfo{
     NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:self.context];
     NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
     request.entity = entity;
@@ -93,12 +128,12 @@ static id _instance;
     }else if (pontoStatus == PontoStatusError) {
         currentHourWorked = @"error";
     }else if ((pontoStatus == PontoStatusStillWorking) || (pontoStatus == PontoStatusDayWorked)) {
-        currentHourWorked = [[NSString alloc] initWithString:[self sumDayTime:currentDayPontoList]];
+        currentHourWorked = [[NSString alloc] initWithString:[self getDayTime:currentDayPontoList]];
     }
     
 }
 
--(NSString*)sumDayTime:(NSArray*)dayList{
+-(NSString*)getDayTime:(NSArray*)dayList{
     
     NSString *enter = nil;
     NSString *first = nil;
@@ -156,28 +191,6 @@ static id _instance;
     
 }
 
--(BOOL)validatePreviousValueWithTime:(NSString*)time AndType:(PointType)type{
-    PointType typeToVerify = type -1;
-    
-    if (type == PointEntraceType) {
-        return YES;
-    }
-    
-    NSString *timeToVerify = [self getTimeByDate:currentDate AndType:typeToVerify];
-    
-    if ([NSString isStringEmpty:timeToVerify]) return YES;
-    
-    NSString *result = [[Utils sharedinstance] getTotalHoursSubtractByTimeIn:timeToVerify AndTimeOut:time];
-    NSRange range = [result rangeOfString:@"error"];
-    
-    if (range.length > 0) {
-        return NO;
-    }
-    
-    
-    return YES;
-}
-
 -(NSString*)getTimeByDate:(NSString*)date AndType:(PointType)type{
     
     NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:self.context];
@@ -195,40 +208,6 @@ static id _instance;
     }
     
     return nil;
-}
-
--(void)setPontoModelWithHour:(NSString*)hour withMinute:(NSString*)minute AndDayModel:(DayModel*)dayModel AndType:(PointType)type{
-    
-    NSEntityDescription *entity = [NSEntityDescription entityForName:PontoModelEntity inManagedObjectContext:self.context];
-    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
-    request.entity = entity;
-    
-    NSArray *result = [self.context executeFetchRequest:request error:nil];
-    NSString *time = [NSString stringWithFormat:@"%@:%@", hour, minute];
-    
-    if (![self validatePreviousValueWithTime:time AndType:type]){
-        [[[UIAlertView alloc] initWithTitle:@"Atenção" message:@"Hora inferior a anterior" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
-        return;
-    }
-    
-    if (result.count > 0){
-        for (PontoModel *pm in result) {
-            if ((pm.day == dayModel) && (pm.type == [NSNumber numberWithInt:type])) {
-                pm.hour = time;
-                return;
-            }
-        }
-    }
-    
-    PontoModel *pontoModel = (PontoModel*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:self.context];
-    
-    pontoModel.hour = [[NSString alloc] initWithFormat:@"%@:%@", hour, minute];
-    pontoModel.type = [NSNumber numberWithInt:type];
-    
-    [self.context insertObject:pontoModel];
-    
-    pontoModel.day = dayModel;
-    
 }
 
 -(DayModel*)getDayModel:(NSString*)day{
@@ -271,9 +250,42 @@ static id _instance;
     [self.context insertObject:ponto];
     
     ponto.day = day;
-    
 }
 
+-(void)getFollowingDay{
+    currentDate = followingDate;
+    [self setDates];
+}
+
+-(void)getPreviousDay{
+    currentDate = previousDate;
+    [self setDates];
+}
+
+#pragma mark - auxiliar method's
+-(BOOL)validatePreviousValueWithTime:(NSString*)time AndType:(PointType)type{
+    PointType typeToVerify = type -1;
+    
+    if (type == PointEntraceType) {
+        return YES;
+    }
+    
+    NSString *timeToVerify = [self getTimeByDate:currentDate AndType:typeToVerify];
+    
+    if ([NSString isStringEmpty:timeToVerify]) return YES;
+    
+    NSString *result = [[Utils sharedinstance] getTotalHoursSubtractByTimeIn:timeToVerify AndTimeOut:time];
+    NSRange range = [result rangeOfString:@"error"];
+    
+    if (range.length > 0) {
+        return NO;
+    }
+    
+    
+    return YES;
+}
+
+#pragma mark - coreData
 -(void)saveContext{
     NSError *error;
     if (![context save:&error]) {
@@ -287,7 +299,7 @@ static id _instance;
             NSLog(@"Problema: %@", informacoes);
         }
     }else{
-        [self timeInfo];
+        [self getTimeInfo];
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationContextSaved object:nil];
     }
 }
@@ -322,17 +334,5 @@ static id _instance;
     [context setPersistentStoreCoordinator:coordinator];
     return context;
 }
-
-
--(void)getFollowingDay{
-    currentDate = followingDate;
-    [self setDates];
-}
-
--(void)getPreviousDay{
-    currentDate = previousDate;
-    [self setDates];
-}
-
 
 @end

@@ -13,8 +13,8 @@
 
 @synthesize previousMonth, followingMonth, currentMonth, currentMonthList, currentTotalMonthHours;
 
+#pragma mark - init methods
 static id _instance;
-
 + (MonthManager *) sharedinstance{
     @synchronized(self){
         if (!_instance) {
@@ -30,20 +30,21 @@ static id _instance;
     if (self) {
         context = [[PontoManager sharedInstance]context];
         currentMonthList = [[NSMutableArray alloc] init];
-        [self getMonthListByDate:[[Utils sharedinstance] currentDate]];
+        [self setCurrentMonthListByDate:[[Utils sharedinstance] currentDate]];
         [self setDates];
     }
     
     return self;
 }
 
+#pragma mark - setters method's
 -(void)setDates{
     currentMonth = [[NSString alloc ] initWithString:[self getMonthByMonthDelay:0]];
     previousMonth = [[NSString alloc ] initWithString:[self getMonthByMonthDelay:-1]];
     followingMonth = [[NSString alloc ] initWithString:[self getMonthByMonthDelay:1]];
 }
 
--(void)getMonthListByDate:(NSString*)date{
+-(void)setCurrentMonthListByDate:(NSString*)date{
     [currentMonthList removeAllObjects];
     NSArray *dateComp = [date componentsSeparatedByString:@"/"];
     NSString *month = nil;
@@ -80,11 +81,12 @@ static id _instance;
         }
     }
     
-    currentTotalMonthHours = [[NSString alloc] initWithString:[self sumMonthHoursByList:currentMonthList]];
+    currentTotalMonthHours = [[NSString alloc] initWithString:[self getMonthHoursByList:currentMonthList]];
     
 }
 
--(NSString*)sumMonthHoursByList:(NSArray*)list{
+#pragma mark - getters method's
+-(NSString*)getMonthHoursByList:(NSArray*)list{
     NSMutableArray *hoursList = [[NSMutableArray alloc]init];
     for (DayModel *day in list) {
         NSString *dayStr = [[day.date componentsSeparatedByString:@"/"] objectAtIndex:0];
@@ -114,26 +116,7 @@ static id _instance;
     dateStr = [formatter stringFromDate:dayFormated];
     
     return dateStr;
-
 }
-
--(void)getFollowingMonth{
-    currentMonth = followingMonth;
-    [self setDates];
-    [self getMonthListByDate:currentMonth];
-}
-
--(void)getPreviousMonth{
-    currentMonth = previousMonth;
-    [self setDates];
-    [self getMonthListByDate:currentMonth];
-}
-
--(void)refresh{
-    [self setDates];
-    [self getMonthListByDate:currentMonth];
-}
-
 -(NSString*)getDayByIndex:(int)index InMonthList:(NSArray*)list{
     
     DayModel *dm = [list objectAtIndex:index];
@@ -157,9 +140,27 @@ static id _instance;
         return @"00:00";//r//
     }
     
-    NSString *hours = [[PontoManager sharedInstance] sumDayTime:dayList];
+    NSString *hours = [[PontoManager sharedInstance] getDayTime:dayList];
     
     return hours;
+}
+
+-(void)getFollowingMonth{
+    currentMonth = followingMonth;
+    [self setDates];
+    [self setCurrentMonthListByDate:currentMonth];
+}
+
+-(void)getPreviousMonth{
+    currentMonth = previousMonth;
+    [self setDates];
+    [self setCurrentMonthListByDate:currentMonth];
+}
+
+#pragma mark - updated method
+-(void)refresh{
+    [self setDates];
+    [self setCurrentMonthListByDate:currentMonth];
 }
 
 

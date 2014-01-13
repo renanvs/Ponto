@@ -19,7 +19,7 @@
     ViewType currentViewType;
 }
 
-@property (readonly ,strong) NSManagedObjectContext *context;;
+@property (readonly ,strong) NSManagedObjectContext *context;
 @property (nonatomic, assign) NSString *currentDate;
 @property (nonatomic, assign) NSString *followingDate;
 @property (nonatomic, assign) NSString *previousDate;
@@ -31,7 +31,7 @@
 -(void)getFollowingDay;
 -(void)getPreviousDay;
 
--(NSString*)sumDayTime:(NSArray*)dayList;
+-(NSString*)getDayTime:(NSArray*)dayList;
 
 +(PontoManager*) sharedInstance;
 

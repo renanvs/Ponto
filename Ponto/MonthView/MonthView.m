@@ -13,7 +13,6 @@
 @implementation MonthView
 
 #pragma mark - internal methods
-
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     
@@ -24,27 +23,19 @@
     return self;
 }
 
--(void)didAddSubview:(UIView *)subview{
-    NSLog(@"Month Add");
-}
-
 -(void)didMoveToSuperview{
     if ([PontoManager sharedInstance].currentViewType == ViewMonthType){
         [[MonthManager sharedinstance] refresh];
         [self refreshLabels];
     }
-    NSLog(@"Month Move S");
 }
-
--(void)didMoveToWindow{
-    NSLog(@"Month Move W");
-}
-
 
 -(void)addObservers{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshLabels) name:NotificationContextSaved object:nil];
 }
 
+
+#pragma mark - Auxiliar method's
 -(void)refreshLabels{
     MonthManager *monthManager = [MonthManager sharedinstance];
     
@@ -57,7 +48,6 @@
 }
 
 #pragma mark - IBAction's
-
 - (IBAction)goToPreviousMonth:(id)sender{
     [[NSNotificationCenter defaultCenter]postNotificationName:NotificationRemoveKeyboard object:nil];
     [[MonthManager sharedinstance] getPreviousMonth];
@@ -73,7 +63,6 @@
 }
 
 #pragma mark - tableViewDelegate
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString * cellIdentifier = @"MonthCell";
     MonthCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -98,6 +87,7 @@
     return [[MonthManager sharedinstance]currentMonthList].count;
 }
 
+#pragma mark - Finish method's
 -(void)dealloc{
     [super dealloc];
     [[NSNotificationCenter defaultCenter] removeObserver:self];

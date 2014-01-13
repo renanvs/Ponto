@@ -11,12 +11,9 @@
 #import "PontoManager.h"
 #import "PontoCell.h"
 
-
-
 @implementation MainViewController
 
 #pragma mark - internal methods
-
 -(id)init{
     self = [super init];
     
@@ -25,23 +22,6 @@
     }
     
     return self;
-}
-
--(void)adjustViewButtons{
-    
-    ViewType type = [PontoManager sharedInstance].currentViewType;
-    
-    if (type == ViewDayType) {
-        [self.buttonDay setAlpha:0.5];
-        [self.buttonMonthList setAlpha:1];
-    }else if (type == ViewMonthType){
-        [self.buttonDay setAlpha:1];
-        [self.buttonMonthList setAlpha:0.5];
-    }else{
-        [self.buttonDay setAlpha:1];
-        [self.buttonMonthList setAlpha:1];
-    }
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -72,6 +52,24 @@
     hasObservers = YES;
 }
 
+#pragma mark - auxliar methods
+-(void)adjustViewButtons{
+    
+    ViewType type = [PontoManager sharedInstance].currentViewType;
+    
+    if (type == ViewDayType) {
+        [self.buttonDay setAlpha:0.5];
+        [self.buttonMonthList setAlpha:1];
+    }else if (type == ViewMonthType){
+        [self.buttonDay setAlpha:1];
+        [self.buttonMonthList setAlpha:0.5];
+    }else{
+        [self.buttonDay setAlpha:1];
+        [self.buttonMonthList setAlpha:1];
+    }
+    
+}
+
 -(void)keyboardDidShow{
     [self addCloseButtonToNumericKeyboard];
 }
@@ -94,12 +92,10 @@
 
     for (UITextField *tf in [self.view subviews]) {
         [tf resignFirstResponder];
-        
     }
     
     for (UIView *view in [self.view subviews]) {
         [view endEditing:YES];
-        
     }
     
     if (closeKeyboardButton) {
@@ -108,8 +104,16 @@
     }
 }
 
-#pragma mark - tabBarDelegate
+-(void)removeSubviewsExceptionView:(UIView*)viewE{
+    for (UIView *view in viewContainer.subviews) {
+        if ((view != viewE) && (view.superview != nil)) {
+            [view retain];
+            [view removeFromSuperview];
+        }
+    }
+}
 
+#pragma mark - IBActions's
 -(IBAction)buttonAction:(id)sender{
     if (sender == self.buttonDay) {
         if (!dayView){
@@ -132,19 +136,11 @@
     [self adjustViewButtons];
 }
 
+#pragma mark - finish method's
 - (void)dealloc {
     [_buttonDay release];
     [_buttonMonthList release];
     [super dealloc];
-}
-
--(void)removeSubviewsExceptionView:(UIView*)viewE{
-    for (UIView *view in viewContainer.subviews) {
-        if ((view != viewE) && (view.superview != nil)) {
-            [view retain];
-            [view removeFromSuperview];
-        }
-    }
 }
 
 @end
