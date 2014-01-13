@@ -37,8 +37,6 @@ typedef enum{
 
 @interface Utils : NSObject
 
--(BOOL)isStringWithNumeric:(NSString*)text;
-
 -(CGRect)screenBoundsOnOrientation;
 
 -(NSString*)getTotalHoursSubtractByTimeIn:(NSString*)timeIn AndTimeOut:(NSString*)timeOut;
@@ -55,5 +53,6 @@ typedef enum{
 @interface NSString (JRAdditions)
 
 + (BOOL)isStringEmpty:(NSString *)string;
++ (BOOL)isStringWithNumeric:(NSString*)string;
 
 @end

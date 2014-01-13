@@ -23,6 +23,15 @@
     return NO;
 }
 
++ (BOOL)isStringWithNumeric:(NSString*)string{
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber *number = [formatter numberFromString:string];
+    bool status = number != nil;
+    
+    return status;
+}
+
 @end
 
 @implementation Utils
@@ -36,15 +45,6 @@ static id _instance;
         }
     }
     return _instance;
-}
-
--(BOOL)isStringWithNumeric:(NSString*)text{
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSNumber *number = [formatter numberFromString:text];
-    bool status = number != nil;
-    
-    return status;
 }
 
 -(CGRect) screenBoundsOnOrientation{
