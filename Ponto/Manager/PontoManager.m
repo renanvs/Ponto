@@ -285,6 +285,13 @@ static id _instance;
     return YES;
 }
 
+-(void)setButtonStyle:(UIButton*)bt{
+    UIImage *backgroundButton = [UIImage imageNamed:@"button.png"];
+    UIEdgeInsets insets = UIEdgeInsetsMake(5.0f, 5.0f, 5.0f, 5.0f);
+    backgroundButton = [backgroundButton resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
+    [bt setBackgroundImage:backgroundButton forState:UIControlStateNormal];
+}
+
 #pragma mark - coreData
 -(void)saveContext{
     NSError *error;

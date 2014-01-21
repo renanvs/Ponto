@@ -27,6 +27,9 @@
 
 -(void)didMoveToSuperview{
     if ([PontoManager sharedInstance].currentViewType == ViewDayType){
+        
+        
+        [self setDefaultStyle];
         [self refreshLabels];
     }
 }
@@ -94,6 +97,13 @@
     
     [self.labelResult setText:pontoManager.currentHourWorked];
 }
+
+-(void)setDefaultStyle{
+    [[PontoManager sharedInstance]setButtonStyle:self.buttonPreviousDay];
+    [[PontoManager sharedInstance]setButtonStyle:self.buttonFollowingDay];
+    [[PontoManager sharedInstance]setButtonStyle:self.buttonAddAll];
+}
+
 
 -(PointType)getTypeByIndex:(int)index{
     PointType type;

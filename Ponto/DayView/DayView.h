@@ -16,6 +16,7 @@
 @property (assign, nonatomic) IBOutlet UILabel *labelCurrentDay;
 @property (assign, nonatomic) IBOutlet UIButton *buttonPreviousDay;
 @property (assign, nonatomic) IBOutlet UIButton *buttonFollowingDay;
+@property (assign, nonatomic) IBOutlet UIButton *buttonAddAll;
 
 @property (assign, nonatomic) IBOutlet UILabel *labelDescription;
 @property (assign, nonatomic) IBOutlet UILabel *labelResult;

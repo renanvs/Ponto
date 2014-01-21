@@ -34,6 +34,8 @@
 -(void)setDefault{
     self.hours.keyboardType = UIKeyboardTypeNumberPad;
     self.minutes.keyboardType = UIKeyboardTypeNumberPad;
+    
+    [[PontoManager sharedInstance]setButtonStyle:self.buttonAction];
 }
 
 #pragma mark - load info

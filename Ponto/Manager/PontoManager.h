@@ -31,6 +31,8 @@
 -(void)getFollowingDay;
 -(void)getPreviousDay;
 
+-(void)setButtonStyle:(UIButton*)bt;
+
 -(NSString*)getDayTime:(NSArray*)dayList;
 
 +(PontoManager*) sharedInstance;

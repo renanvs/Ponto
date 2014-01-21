@@ -76,7 +76,7 @@
 
 -(void)addCloseButtonToNumericKeyboard{
     CGRect deviceSize = [[Utils sharedinstance] screenBoundsOnOrientation];
-    deviceSize.origin.y = deviceSize.size.height-216-30;
+    deviceSize.origin.y = deviceSize.size.height-216-50;
     deviceSize.origin.x = deviceSize.size.width-70;
     
     closeKeyboardButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];

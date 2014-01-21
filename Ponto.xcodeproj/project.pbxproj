@@ -26,6 +26,16 @@
 		1E904CCA187F7151003C4105 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E904CC8187F7151003C4105 /* AppDelegate.m */; };
 		1E904CCB187F7151003C4105 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E904CC9187F7151003C4105 /* main.m */; };
 		1E904CD1187F715B003C4105 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1E904CCD187F715B003C4105 /* InfoPlist.strings */; };
+		1E98F99A188DE0FC006EC1E5 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E98F994188DE0FC006EC1E5 /* backButton.png */; };
+		1E98F99B188DE0FC006EC1E5 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E98F995188DE0FC006EC1E5 /* backButton@2x.png */; };
+		1E98F99C188DE0FC006EC1E5 /* topBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E98F996188DE0FC006EC1E5 /* topBar@2x.png */; };
+		1E98F99D188DE0FC006EC1E5 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E98F997188DE0FC006EC1E5 /* button@2x.png */; };
+		1E98F99E188DE0FC006EC1E5 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E98F998188DE0FC006EC1E5 /* button.png */; };
+		1E98F99F188DE0FC006EC1E5 /* topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E98F999188DE0FC006EC1E5 /* topBar.png */; };
+		1E98F9A1188DF010006EC1E5 /* textFieldBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E98F9A0188DF00F006EC1E5 /* textFieldBg.png */; };
+		1E98F9A4188DF370006EC1E5 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E98F9A2188DF36F006EC1E5 /* bg.png */; };
+		1E98F9A5188DF371006EC1E5 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E98F9A3188DF370006EC1E5 /* bg@2x.png */; };
+		1E98F9A7188DF6F9006EC1E5 /* cellBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E98F9A6188DF6F9006EC1E5 /* cellBg.png */; };
 		1EA80A0F187F8B710056E299 /* baseBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA80A09187F8B710056E299 /* baseBar.png */; };
 		1EA80A10187F8B710056E299 /* baseBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA80A0A187F8B710056E299 /* baseBar@2x.png */; };
 		1EA80A11187F8B710056E299 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA80A0B187F8B710056E299 /* clock.png */; };
@@ -71,6 +81,16 @@
 		1E904CCE187F715B003C4105 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		1E904CCF187F715B003C4105 /* Ponto-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Ponto-Info.plist"; path = "Ponto/Ponto/Ponto-Info.plist"; sourceTree = "<group>"; };
 		1E904CD0187F715B003C4105 /* Ponto-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Ponto-Prefix.pch"; path = "Ponto/Ponto/Ponto-Prefix.pch"; sourceTree = "<group>"; };
+		1E98F994188DE0FC006EC1E5 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
+		1E98F995188DE0FC006EC1E5 /* backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButton@2x.png"; sourceTree = "<group>"; };
+		1E98F996188DE0FC006EC1E5 /* topBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topBar@2x.png"; sourceTree = "<group>"; };
+		1E98F997188DE0FC006EC1E5 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button@2x.png"; sourceTree = "<group>"; };
+		1E98F998188DE0FC006EC1E5 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		1E98F999188DE0FC006EC1E5 /* topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar.png; sourceTree = "<group>"; };
+		1E98F9A0188DF00F006EC1E5 /* textFieldBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textFieldBg.png; sourceTree = "<group>"; };
+		1E98F9A2188DF36F006EC1E5 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		1E98F9A3188DF370006EC1E5 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
+		1E98F9A6188DF6F9006EC1E5 /* cellBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBg.png; sourceTree = "<group>"; };
 		1EA80A09187F8B710056E299 /* baseBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baseBar.png; sourceTree = "<group>"; };
 		1EA80A0A187F8B710056E299 /* baseBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baseBar@2x.png"; sourceTree = "<group>"; };
 		1EA80A0B187F8B710056E299 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
@@ -216,11 +236,21 @@
 				1E904CA7187F713C003C4105 /* Manager */,
 				1E904CAE187F713C003C4105 /* MonthView */,
 				1EA80A09187F8B710056E299 /* baseBar.png */,
+				1E98F9A2188DF36F006EC1E5 /* bg.png */,
+				1E98F9A6188DF6F9006EC1E5 /* cellBg.png */,
+				1E98F9A3188DF370006EC1E5 /* bg@2x.png */,
+				1E98F9A0188DF00F006EC1E5 /* textFieldBg.png */,
 				1EA80A0A187F8B710056E299 /* baseBar@2x.png */,
 				1EA80A0B187F8B710056E299 /* clock.png */,
 				1EA80A0C187F8B710056E299 /* clock@2x.png */,
 				1EA80A0D187F8B710056E299 /* list.png */,
 				1EA80A0E187F8B710056E299 /* list@2x.png */,
+				1E98F994188DE0FC006EC1E5 /* backButton.png */,
+				1E98F995188DE0FC006EC1E5 /* backButton@2x.png */,
+				1E98F996188DE0FC006EC1E5 /* topBar@2x.png */,
+				1E98F997188DE0FC006EC1E5 /* button@2x.png */,
+				1E98F998188DE0FC006EC1E5 /* button.png */,
+				1E98F999188DE0FC006EC1E5 /* topBar.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -296,14 +326,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EA80A11187F8B710056E299 /* clock.png in Resources */,
+				1E98F99B188DE0FC006EC1E5 /* backButton@2x.png in Resources */,
 				1E904CC3187F713C003C4105 /* MonthCell.xib in Resources */,
+				1E98F9A5188DF371006EC1E5 /* bg@2x.png in Resources */,
 				1E904CD1187F715B003C4105 /* InfoPlist.strings in Resources */,
 				1EA80A0F187F8B710056E299 /* baseBar.png in Resources */,
+				1E98F99C188DE0FC006EC1E5 /* topBar@2x.png in Resources */,
+				1E98F99D188DE0FC006EC1E5 /* button@2x.png in Resources */,
+				1E98F99E188DE0FC006EC1E5 /* button.png in Resources */,
 				1EA80A14187F8B710056E299 /* list@2x.png in Resources */,
 				1EA80A10187F8B710056E299 /* baseBar@2x.png in Resources */,
+				1E98F9A4188DF370006EC1E5 /* bg.png in Resources */,
 				1EA80A12187F8B710056E299 /* clock@2x.png in Resources */,
+				1E98F99F188DE0FC006EC1E5 /* topBar.png in Resources */,
 				1E904CC5187F713C003C4105 /* MonthView.xib in Resources */,
+				1E98F9A1188DF010006EC1E5 /* textFieldBg.png in Resources */,
 				1E904CBC187F713C003C4105 /* PontoCell.xib in Resources */,
+				1E98F99A188DE0FC006EC1E5 /* backButton.png in Resources */,
+				1E98F9A7188DF6F9006EC1E5 /* cellBg.png in Resources */,
 				1E904CBE187F713C003C4105 /* MainViewController.xib in Resources */,
 				1EA80A13187F8B710056E299 /* list.png in Resources */,
 				1E904CBA187F713C003C4105 /* DayView.xib in Resources */,
@@ -364,7 +404,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rafael Steil (9SQJCZD6ZQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rafael Steil (9SQJCZD6ZQ)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -380,8 +421,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "3BD07C7E-BDEE-4413-B4C3-71A2D4CD4F14";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -413,7 +455,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "3BD07C7E-BDEE-4413-B4C3-71A2D4CD4F14";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -428,6 +471,7 @@
 				GCC_PREFIX_HEADER = "Ponto/Ponto/Ponto-Prefix.pch";
 				INFOPLIST_FILE = "Ponto/Ponto/Ponto-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "70B1304F-1858-4650-A56A-B7AEB40072BF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -441,6 +485,7 @@
 				GCC_PREFIX_HEADER = "Ponto/Ponto/Ponto-Prefix.pch";
 				INFOPLIST_FILE = "Ponto/Ponto/Ponto-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "70B1304F-1858-4650-A56A-B7AEB40072BF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
