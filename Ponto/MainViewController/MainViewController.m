@@ -148,6 +148,18 @@
     [self adjustViewButtons];
 }
 
+-(void)buttonGraphic:(id)sender{
+    GraphicalCircle *graphic = [[GraphicalCircle alloc] init];
+    graphic.graphicTitle = @"Teste";
+    graphic.type = @"percent";
+    graphic.data = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:@"10", @"20", @"30", nil] forKeys:[NSArray arrayWithObjects:@"janeiro", @"fevereiro", @"março", nil]];
+    [self presentModalViewController:graphic animated:YES];
+}
+
+-(void)buttonSettings:(id)sender{
+    
+}
+
 #pragma mark - finish method's
 - (void)dealloc {
     [_buttonDay release];

@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+%header_declarations%
+
+<script>
+  $(function () {
+    $('#container').highcharts({
+        chart: {
+            plotBackgroundColor: false,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: '%TITLE%'
+        },
+        tooltip: {
+          pointFormat: "%FORMAT_TOOL%"
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: "%FORMAT_LABEL%"
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Test Name',
+            data: [
+                %DATA_FIELD%
+            ]
+        }]
+    });
+});
+</script>
+
+</head>
+
+<body >
+  <div id="container" style="width:%WIDTH%; height:%HEIGHT%;"></div>
+</body>
+
+</html>

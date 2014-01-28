@@ -1,0 +1,51 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<script src='file:///Users/renansilva/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/816D0706-29E6-498A-B7CC-6BBC613048F2/Ponto.app/jquery.min.js'></script><script src='file:///Users/renansilva/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/816D0706-29E6-498A-B7CC-6BBC613048F2/Ponto.app/highcharts.js'></script>
+
+<script>
+  $(function () {
+    $('#container').highcharts({
+        chart: {
+            plotBackgroundColor: false,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Teste'
+        },
+        tooltip: {
+          pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: "<p style='font-size:14px;font-weight:bolder'>{point.name}</p> :  {point.percentage:.2f}%"
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Test Name',
+            data: [
+                ['março', 30],['fevereiro', 20],['janeiro', 10]
+            ]
+        }]
+    });
+});
+</script>
+
+</head>
+
+<body >
+  <div id="container" style="width:320; height:460;"></div>
+</body>
+
+</html>

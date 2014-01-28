@@ -31,28 +31,46 @@
                     <rect key="frame" x="0.0" y="417" width="320" height="63"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseBar.png" id="HVK-9J-j0f">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eQ9-bL-EoV">
-                            <rect key="frame" x="60" y="23" width="32" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="clock.png">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eQ9-bL-EoV">
+                            <rect key="frame" x="81" y="0.0" width="80" height="63"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <inset key="contentEdgeInsets" minX="0.0" minY="13" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" image="clock.png" backgroundImage="baseBar_buttonLeft.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="xsM-0N-OIc"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SHn-DZ-lFm">
-                            <rect key="frame" x="225" y="27" width="32" height="27"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="list.png">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SHn-DZ-lFm">
+                            <rect key="frame" x="161" y="0.0" width="80" height="63"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <inset key="contentEdgeInsets" minX="0.0" minY="13" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" image="list.png" backgroundImage="baseBar_buttonRight.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="gTv-Ck-1bD"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cIr-O6-OXA">
+                            <rect key="frame" x="240" y="13" width="80" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <state key="normal" image="settings.png" backgroundImage="baseBar_buttonDefault.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonSettings:" destination="-1" eventType="touchUpInside" id="MA4-qf-pYv"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="inQ-de-uVv">
+                            <rect key="frame" x="0.0" y="13" width="81" height="51"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <state key="normal" image="graph.png" backgroundImage="baseBar_buttonDefault.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonGraphic:" destination="-1" eventType="touchUpInside" id="8ql-gy-3cO"/>
                             </connections>
                         </button>
                     </subviews>
@@ -63,9 +81,13 @@
         </view>
     </objects>
     <resources>
-        <image name="baseBar.png" width="323" height="63"/>
+        <image name="baseBar_buttonDefault.png" width="126" height="50"/>
+        <image name="baseBar_buttonLeft.png" width="161" height="63"/>
+        <image name="baseBar_buttonRight.png" width="161" height="63"/>
         <image name="bg.png" width="320" height="480"/>
         <image name="clock.png" width="32" height="32"/>
+        <image name="graph.png" width="32" height="32"/>
         <image name="list.png" width="33" height="29"/>
+        <image name="settings.png" width="32" height="32"/>
     </resources>
 </document>

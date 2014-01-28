@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1F6A1F1897415200230935 /* baseBar_buttonDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A191897415200230935 /* baseBar_buttonDefault.png */; };
+		1E1F6A201897415200230935 /* baseBar_buttonDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A1A1897415200230935 /* baseBar_buttonDefault@2x.png */; };
+		1E1F6A211897415200230935 /* baseBar_buttonLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A1B1897415200230935 /* baseBar_buttonLeft.png */; };
+		1E1F6A221897415200230935 /* baseBar_buttonLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A1C1897415200230935 /* baseBar_buttonLeft@2x.png */; };
+		1E1F6A231897415200230935 /* baseBar_buttonRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A1D1897415200230935 /* baseBar_buttonRight.png */; };
+		1E1F6A241897415200230935 /* baseBar_buttonRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A1E1897415200230935 /* baseBar_buttonRight@2x.png */; };
+		1E1F6A281897448700230935 /* GraphicalCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1F6A261897448600230935 /* GraphicalCircle.m */; };
+		1E1F6A291897448700230935 /* GraphicalCircle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A271897448700230935 /* GraphicalCircle.xib */; };
+		1E1F6A2E189745DE00230935 /* highcharts.js in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A2B189745DE00230935 /* highcharts.js */; };
+		1E1F6A2F189745DE00230935 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A2C189745DE00230935 /* index.html */; };
+		1E1F6A30189745DE00230935 /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A2D189745DE00230935 /* jquery.min.js */; };
+		1E1F6A3518974E3600230935 /* graph.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A3118974E3600230935 /* graph.png */; };
+		1E1F6A3618974E3600230935 /* graph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A3218974E3600230935 /* graph@2x.png */; };
+		1E1F6A3718974E3600230935 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A3318974E3600230935 /* settings.png */; };
+		1E1F6A3818974E3600230935 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1F6A3418974E3600230935 /* settings@2x.png */; };
 		1E904CB6187F713C003C4105 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E904C95187F713C003C4105 /* CoreDataModel.xcdatamodeld */; };
 		1E904CB7187F713C003C4105 /* DayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E904C98187F713C003C4105 /* DayModel.m */; };
 		1E904CB8187F713C003C4105 /* PontoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E904C9A187F713C003C4105 /* PontoModel.m */; };
@@ -49,6 +64,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E1F6A191897415200230935 /* baseBar_buttonDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baseBar_buttonDefault.png; sourceTree = "<group>"; };
+		1E1F6A1A1897415200230935 /* baseBar_buttonDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baseBar_buttonDefault@2x.png"; sourceTree = "<group>"; };
+		1E1F6A1B1897415200230935 /* baseBar_buttonLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baseBar_buttonLeft.png; sourceTree = "<group>"; };
+		1E1F6A1C1897415200230935 /* baseBar_buttonLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baseBar_buttonLeft@2x.png"; sourceTree = "<group>"; };
+		1E1F6A1D1897415200230935 /* baseBar_buttonRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baseBar_buttonRight.png; sourceTree = "<group>"; };
+		1E1F6A1E1897415200230935 /* baseBar_buttonRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baseBar_buttonRight@2x.png"; sourceTree = "<group>"; };
+		1E1F6A251897448600230935 /* GraphicalCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicalCircle.h; sourceTree = "<group>"; };
+		1E1F6A261897448600230935 /* GraphicalCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicalCircle.m; sourceTree = "<group>"; };
+		1E1F6A271897448700230935 /* GraphicalCircle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphicalCircle.xib; sourceTree = "<group>"; };
+		1E1F6A2B189745DE00230935 /* highcharts.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highcharts.js; sourceTree = "<group>"; };
+		1E1F6A2C189745DE00230935 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		1E1F6A2D189745DE00230935 /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
+		1E1F6A3118974E3600230935 /* graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graph.png; sourceTree = "<group>"; };
+		1E1F6A3218974E3600230935 /* graph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "graph@2x.png"; sourceTree = "<group>"; };
+		1E1F6A3318974E3600230935 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		1E1F6A3418974E3600230935 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		1E904C96187F713C003C4105 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		1E904C97187F713C003C4105 /* DayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayModel.h; sourceTree = "<group>"; };
 		1E904C98187F713C003C4105 /* DayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayModel.m; sourceTree = "<group>"; };
@@ -120,6 +151,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E1F6A2A1897448C00230935 /* GraphicalCircle */ = {
+			isa = PBXGroup;
+			children = (
+				1E1F6A251897448600230935 /* GraphicalCircle.h */,
+				1E1F6A261897448600230935 /* GraphicalCircle.m */,
+				1E1F6A271897448700230935 /* GraphicalCircle.xib */,
+				1E1F6A2B189745DE00230935 /* highcharts.js */,
+				1E1F6A2C189745DE00230935 /* index.html */,
+				1E1F6A2D189745DE00230935 /* jquery.min.js */,
+			);
+			name = GraphicalCircle;
+			sourceTree = "<group>";
+		};
 		1E904C94187F713C003C4105 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +271,7 @@
 		1EB759EA186500CC00845DCE = {
 			isa = PBXGroup;
 			children = (
+				1E1F6A2A1897448C00230935 /* GraphicalCircle */,
 				1EC7C886188F11DE005D9F89 /* images */,
 				1E904CC6187F7145003C4105 /* Ponto */,
 				1EB759F5186500CC00845DCE /* Frameworks */,
@@ -262,6 +307,16 @@
 		1EC7C886188F11DE005D9F89 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1E1F6A3118974E3600230935 /* graph.png */,
+				1E1F6A3218974E3600230935 /* graph@2x.png */,
+				1E1F6A3318974E3600230935 /* settings.png */,
+				1E1F6A3418974E3600230935 /* settings@2x.png */,
+				1E1F6A191897415200230935 /* baseBar_buttonDefault.png */,
+				1E1F6A1A1897415200230935 /* baseBar_buttonDefault@2x.png */,
+				1E1F6A1B1897415200230935 /* baseBar_buttonLeft.png */,
+				1E1F6A1C1897415200230935 /* baseBar_buttonLeft@2x.png */,
+				1E1F6A1D1897415200230935 /* baseBar_buttonRight.png */,
+				1E1F6A1E1897415200230935 /* baseBar_buttonRight@2x.png */,
 				1EA80A09187F8B710056E299 /* baseBar.png */,
 				1E98F9A2188DF36F006EC1E5 /* bg.png */,
 				1E98F9A6188DF6F9006EC1E5 /* cellBg.png */,
@@ -334,23 +389,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EA80A11187F8B710056E299 /* clock.png in Resources */,
+				1E1F6A3818974E3600230935 /* settings@2x.png in Resources */,
+				1E1F6A3718974E3600230935 /* settings.png in Resources */,
+				1E1F6A2E189745DE00230935 /* highcharts.js in Resources */,
+				1E1F6A30189745DE00230935 /* jquery.min.js in Resources */,
+				1E1F6A1F1897415200230935 /* baseBar_buttonDefault.png in Resources */,
+				1E1F6A221897415200230935 /* baseBar_buttonLeft@2x.png in Resources */,
 				1E98F99B188DE0FC006EC1E5 /* backButton@2x.png in Resources */,
 				1E904CC3187F713C003C4105 /* MonthCell.xib in Resources */,
 				1E98F9A5188DF371006EC1E5 /* bg@2x.png in Resources */,
 				1E904CD1187F715B003C4105 /* InfoPlist.strings in Resources */,
 				1EA80A0F187F8B710056E299 /* baseBar.png in Resources */,
+				1E1F6A241897415200230935 /* baseBar_buttonRight@2x.png in Resources */,
 				1E98F99C188DE0FC006EC1E5 /* topBar@2x.png in Resources */,
 				1E98F99D188DE0FC006EC1E5 /* button@2x.png in Resources */,
 				1E98F99E188DE0FC006EC1E5 /* button.png in Resources */,
 				1EA80A14187F8B710056E299 /* list@2x.png in Resources */,
+				1E1F6A3518974E3600230935 /* graph.png in Resources */,
 				1EA80A10187F8B710056E299 /* baseBar@2x.png in Resources */,
 				1E98F9A4188DF370006EC1E5 /* bg.png in Resources */,
+				1E1F6A2F189745DE00230935 /* index.html in Resources */,
+				1E1F6A231897415200230935 /* baseBar_buttonRight.png in Resources */,
 				1EA80A12187F8B710056E299 /* clock@2x.png in Resources */,
+				1E1F6A3618974E3600230935 /* graph@2x.png in Resources */,
 				1E98F99F188DE0FC006EC1E5 /* topBar.png in Resources */,
+				1E1F6A211897415200230935 /* baseBar_buttonLeft.png in Resources */,
 				1E904CC5187F713C003C4105 /* MonthView.xib in Resources */,
 				1E98F9A1188DF010006EC1E5 /* textFieldBg.png in Resources */,
+				1E1F6A201897415200230935 /* baseBar_buttonDefault@2x.png in Resources */,
 				1E904CBC187F713C003C4105 /* PontoCell.xib in Resources */,
 				1E98F99A188DE0FC006EC1E5 /* backButton.png in Resources */,
+				1E1F6A291897448700230935 /* GraphicalCircle.xib in Resources */,
 				1E98F9A7188DF6F9006EC1E5 /* cellBg.png in Resources */,
 				1E904CBE187F713C003C4105 /* MainViewController.xib in Resources */,
 				1EA80A13187F8B710056E299 /* list.png in Resources */,
@@ -372,6 +441,7 @@
 				1E904CBD187F713C003C4105 /* MainViewController.m in Sources */,
 				1E904CBF187F713C003C4105 /* MonthManager.m in Sources */,
 				1E904CB9187F713C003C4105 /* DayView.m in Sources */,
+				1E1F6A281897448700230935 /* GraphicalCircle.m in Sources */,
 				1E904CC0187F713C003C4105 /* PontoManager.m in Sources */,
 				1E904CB7187F713C003C4105 /* DayModel.m in Sources */,
 				1E904CCA187F7151003C4105 /* AppDelegate.m in Sources */,
