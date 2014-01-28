@@ -227,6 +227,7 @@
 		1EB759EA186500CC00845DCE = {
 			isa = PBXGroup;
 			children = (
+				1EC7C886188F11DE005D9F89 /* images */,
 				1E904CC6187F7145003C4105 /* Ponto */,
 				1EB759F5186500CC00845DCE /* Frameworks */,
 				1EB759F4186500CC00845DCE /* Products */,
@@ -235,22 +236,6 @@
 				1E904CA3187F713C003C4105 /* MainViewController */,
 				1E904CA7187F713C003C4105 /* Manager */,
 				1E904CAE187F713C003C4105 /* MonthView */,
-				1EA80A09187F8B710056E299 /* baseBar.png */,
-				1E98F9A2188DF36F006EC1E5 /* bg.png */,
-				1E98F9A6188DF6F9006EC1E5 /* cellBg.png */,
-				1E98F9A3188DF370006EC1E5 /* bg@2x.png */,
-				1E98F9A0188DF00F006EC1E5 /* textFieldBg.png */,
-				1EA80A0A187F8B710056E299 /* baseBar@2x.png */,
-				1EA80A0B187F8B710056E299 /* clock.png */,
-				1EA80A0C187F8B710056E299 /* clock@2x.png */,
-				1EA80A0D187F8B710056E299 /* list.png */,
-				1EA80A0E187F8B710056E299 /* list@2x.png */,
-				1E98F994188DE0FC006EC1E5 /* backButton.png */,
-				1E98F995188DE0FC006EC1E5 /* backButton@2x.png */,
-				1E98F996188DE0FC006EC1E5 /* topBar@2x.png */,
-				1E98F997188DE0FC006EC1E5 /* button@2x.png */,
-				1E98F998188DE0FC006EC1E5 /* button.png */,
-				1E98F999188DE0FC006EC1E5 /* topBar.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -272,6 +257,29 @@
 				1EB75A0F186500CD00845DCE /* XCTest.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1EC7C886188F11DE005D9F89 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				1EA80A09187F8B710056E299 /* baseBar.png */,
+				1E98F9A2188DF36F006EC1E5 /* bg.png */,
+				1E98F9A6188DF6F9006EC1E5 /* cellBg.png */,
+				1E98F9A3188DF370006EC1E5 /* bg@2x.png */,
+				1E98F9A0188DF00F006EC1E5 /* textFieldBg.png */,
+				1EA80A0A187F8B710056E299 /* baseBar@2x.png */,
+				1EA80A0B187F8B710056E299 /* clock.png */,
+				1EA80A0C187F8B710056E299 /* clock@2x.png */,
+				1EA80A0D187F8B710056E299 /* list.png */,
+				1EA80A0E187F8B710056E299 /* list@2x.png */,
+				1E98F994188DE0FC006EC1E5 /* backButton.png */,
+				1E98F995188DE0FC006EC1E5 /* backButton@2x.png */,
+				1E98F996188DE0FC006EC1E5 /* topBar@2x.png */,
+				1E98F997188DE0FC006EC1E5 /* button@2x.png */,
+				1E98F998188DE0FC006EC1E5 /* button.png */,
+				1E98F999188DE0FC006EC1E5 /* topBar.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,7 +479,7 @@
 				GCC_PREFIX_HEADER = "Ponto/Ponto/Ponto-Prefix.pch";
 				INFOPLIST_FILE = "Ponto/Ponto/Ponto-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "70B1304F-1858-4650-A56A-B7AEB40072BF";
+				PROVISIONING_PROFILE = "3BD07C7E-BDEE-4413-B4C3-71A2D4CD4F14";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -485,7 +493,7 @@
 				GCC_PREFIX_HEADER = "Ponto/Ponto/Ponto-Prefix.pch";
 				INFOPLIST_FILE = "Ponto/Ponto/Ponto-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "70B1304F-1858-4650-A56A-B7AEB40072BF";
+				PROVISIONING_PROFILE = "3BD07C7E-BDEE-4413-B4C3-71A2D4CD4F14";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

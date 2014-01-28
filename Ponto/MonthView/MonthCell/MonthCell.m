@@ -7,14 +7,18 @@
 //
 
 #import "MonthCell.h"
+#import "MonthManager.h"
 
 @implementation MonthCell
 
-@synthesize day, hours;
+@synthesize model;
 
 -(void)setInfo{
-    labelDay.text = day;
-    labelMonthHours.text = hours;
+    NSString *day = [[model.date componentsSeparatedByString:@"/"] objectAtIndex:0];
+    labelDay.text = model.date;
+    
+    NSString *hours = [[MonthManager sharedinstance] getHoursByDay:day InMonthList:[[MonthManager sharedinstance]currentMonthList]];
+    labelMonthHours.text = [NSString stringWithFormat:@"%@ horas",hours];
 }
 
 @end

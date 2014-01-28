@@ -36,6 +36,8 @@
 
 -(void)addObservers{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshLabels) name:NotificationContextSaved object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidDisappear) name:UIKeyboardDidHideNotification object:nil];
 }
 
 #pragma mark - IBAction's
@@ -89,6 +91,7 @@
 #pragma mark - auxiliar methods
 
 -(void)refreshLabels{
+    
     PontoManager *pontoManager = [PontoManager sharedInstance];
     
     [self.buttonPreviousDay setTitle:pontoManager.previousDate forState:UIControlStateNormal];
@@ -102,6 +105,8 @@
     [[PontoManager sharedInstance]setButtonStyle:self.buttonPreviousDay];
     [[PontoManager sharedInstance]setButtonStyle:self.buttonFollowingDay];
     [[PontoManager sharedInstance]setButtonStyle:self.buttonAddAll];
+    
+    tableViewOriginalRect = tableViewPontoDayList.frame;
 }
 
 
@@ -124,6 +129,68 @@
     }
     
     return type;
+}
+
+-(void)keyboardDidShow:(NSNotification*)notification{
+    
+    //todo extract method
+    NSDictionary* keyboardInfo = [notification userInfo];
+    NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameBeginUserInfoKey];
+    CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
+    CGFloat keyboardHeight = keyboardFrameBeginRect.size.height;
+    CGRect deviceRect = [[Utils sharedinstance] screenBoundsOnOrientation];
+    CGFloat deviceHeight = deviceRect.size.height;
+    CGFloat topbarHeight = topBar.frame.size.height;
+    CGFloat gap = 18;
+    
+    CGFloat tableViewNewHeight = deviceHeight - (keyboardHeight + topbarHeight + gap + 30);
+    
+    CGRect tableViewNewRect = CGRectMake(tableViewOriginalRect.origin.x, tableViewOriginalRect.origin.y, tableViewOriginalRect.size.width, tableViewNewHeight);
+    
+    [tableViewPontoDayList setFrame:tableViewNewRect];
+    [tableViewPontoDayList setBounces:YES];
+    [tableViewPontoDayList setScrollEnabled:YES];
+}
+
+-(void)keyboardDidDisappear{
+    [tableViewPontoDayList setBounces:NO];
+    [tableViewPontoDayList setScrollEnabled:NO];
+    [tableViewPontoDayList setFrame:tableViewOriginalRect];
+    
+}
+
+//todo next previous
+-(void)addCloseButtonToNumericKeyboard{
+    CGRect deviceSize = [[Utils sharedinstance] screenBoundsOnOrientation];
+    deviceSize.origin.y = deviceSize.size.height-216-50;
+    deviceSize.origin.x = deviceSize.size.width-70;
+    
+    [self createButton:nextFieldButton WithTitle:@"Proximo"];
+    [self createButton:previousFieldButton WithTitle:@"Anterior"];
+    
+    [previousFieldButton setFrame:CGRectMake(deviceSize.origin.x, deviceSize.origin.y, 70, 30)];
+    [nextFieldButton setFrame:CGRectMake(deviceSize.origin.x, deviceSize.origin.y, 70, 30)];
+    
+    [previousFieldButton addTarget:self action:@selector(previousField) forControlEvents:UIControlEventTouchUpInside];
+    [nextFieldButton addTarget:self action:@selector(nextField) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self addSubview:previousFieldButton];
+    [self addSubview:nextFieldButton];
+}
+
+-(void)createButton:(UIButton*)bt WithTitle:(NSString*)title{
+    bt = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [bt setTitle:title forState:UIControlStateNormal];
+    [bt setBackgroundColor:[UIColor whiteColor]];
+    [[PontoManager sharedInstance] setButtonStyle:bt];
+}
+
+-(void)nextField{
+
+}
+
+-(void)previousField{
+    
 }
 
 #pragma mark - finish methods

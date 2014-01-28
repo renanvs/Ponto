@@ -11,6 +11,11 @@
 
 @interface DayView : UIView <UITableViewDataSource, UITableViewDelegate>{
     IBOutlet UITableView *tableViewPontoDayList;
+    CGRect tableViewOriginalRect;
+    UIButton *previousFieldButton;
+    UIButton *nextFieldButton;
+    UITextField *currentTextField;
+    IBOutlet UIView *topBar;
 }
 
 @property (assign, nonatomic) IBOutlet UILabel *labelCurrentDay;

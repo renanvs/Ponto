@@ -7,16 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DayModel.h"
 
 @interface MonthCell : UITableViewCell{
     IBOutlet UILabel  *labelDay;
     IBOutlet UILabel  *labelMonthHours;
-    NSString *day;
-    NSString *hours;
+    DayModel *model;
 }
 
-@property (nonatomic, assign) NSString  *day;
-@property (nonatomic, assign) NSString  *hours;
+@property (nonatomic, assign) DayModel *model;
 
 -(void)setInfo;
 

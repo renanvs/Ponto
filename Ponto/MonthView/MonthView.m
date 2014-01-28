@@ -27,6 +27,7 @@
     if ([PontoManager sharedInstance].currentViewType == ViewMonthType){
         [[MonthManager sharedinstance] refresh];
         [self refreshLabels];
+        [self setDefaultLayout];
     }
 }
 
@@ -37,6 +38,8 @@
 
 #pragma mark - Auxiliar method's
 -(void)refreshLabels{
+    
+    
     MonthManager *monthManager = [MonthManager sharedinstance];
     
     [self.buttonPreviousMonth setTitle:monthManager.previousMonth forState:UIControlStateNormal];
@@ -45,6 +48,11 @@
     
     [self.labelResult setText:[NSString stringWithFormat:@"%@ horas",monthManager.currentTotalMonthHours]];
     [tableViewPontoMonthList reloadData];
+}
+
+-(void)setDefaultLayout{
+    [[PontoManager sharedInstance]setButtonStyle:self.buttonFollowingMonth];
+    [[PontoManager sharedInstance]setButtonStyle:self.buttonPreviousMonth];
 }
 
 #pragma mark - IBAction's
@@ -70,9 +78,7 @@
     if (cell == nil){
         cell = [[[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options:nil] objectAtIndex:0];
     }
-    
-    cell.day = [[MonthManager sharedinstance] getDayByIndex:indexPath.row InMonthList:[[MonthManager sharedinstance]currentMonthList]];
-    cell.hours = [[MonthManager sharedinstance] getHoursByDay:cell.day InMonthList:[[MonthManager sharedinstance]currentMonthList]];
+    cell.model = [[[MonthManager sharedinstance]currentMonthList] objectAtIndex:indexPath.row];
     
     [cell setInfo];
     
@@ -81,7 +87,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     CGRect tableFrame = tableViewPontoMonthList.frame;
-    tableFrame.size.height = 240;
+    tableFrame.size.height = 300;
     tableViewPontoMonthList.frame = tableFrame;
     
     return [[MonthManager sharedinstance]currentMonthList].count;

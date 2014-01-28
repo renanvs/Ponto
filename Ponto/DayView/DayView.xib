@@ -42,6 +42,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="21/12">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -73,6 +74,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="Adicionar Todos">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -88,7 +90,8 @@
                 <outlet property="labelCurrentDay" destination="dfw-80-nTD" id="JcA-eR-D7g"/>
                 <outlet property="labelDescription" destination="QbD-23-D4S" id="GiY-kv-hmd"/>
                 <outlet property="labelResult" destination="IGH-5K-bNL" id="DjH-dg-llI"/>
-                <outlet property="tableViewPontoDayList" destination="IzS-1U-OJ7" id="lvR-3s-SmZ"/>
+                <outlet property="tableViewPontoDayList" destination="IzS-1U-OJ7" id="PVD-0C-B7H"/>
+                <outlet property="topBar" destination="fDT-Jm-R6E" id="WxS-Y4-cg3"/>
             </connections>
         </view>
     </objects>

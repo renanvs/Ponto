@@ -38,6 +38,8 @@
     
     [self adjustViewButtons];
     
+    //[self buttonAction:self.buttonMonthList];
+    
 }
 
 -(void)addObservers{
@@ -45,7 +47,7 @@
         return;
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeKeyboard) name:NotificationRemoveKeyboard object:nil];
     
@@ -53,6 +55,7 @@
 }
 
 #pragma mark - auxliar methods
+
 -(void)adjustViewButtons{
     
     ViewType type = [PontoManager sharedInstance].currentViewType;
@@ -70,21 +73,30 @@
     
 }
 
--(void)keyboardDidShow{
-    [self addCloseButtonToNumericKeyboard];
+-(void)keyboardDidShow:(NSNotification*)notification{
+    //todo extract method
+    NSDictionary* keyboardInfo = [notification userInfo];
+    NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameBeginUserInfoKey];
+    CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
+    
+    [self addCloseButtonToNumericKeyboardWithKeyboardRect:keyboardFrameBeginRect];
 }
 
--(void)addCloseButtonToNumericKeyboard{
+-(void)addCloseButtonToNumericKeyboardWithKeyboardRect:(CGRect)rect{
+    //70 30
+    
     CGRect deviceSize = [[Utils sharedinstance] screenBoundsOnOrientation];
-    deviceSize.origin.y = deviceSize.size.height-216-50;
-    deviceSize.origin.x = deviceSize.size.width-70;
+    CGFloat yButton = deviceSize.size.height-rect.size.height-30;
+    CGFloat xButton = deviceSize.size.width-70;
+    CGRect buttonRect = CGRectMake(xButton, yButton, 70, 30);
     
     closeKeyboardButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [closeKeyboardButton setFrame:CGRectMake(deviceSize.origin.x, deviceSize.origin.y, 70, 30)];
+    [closeKeyboardButton setFrame:buttonRect];
     [closeKeyboardButton setTitle:@"Fechar" forState:UIControlStateNormal];
-    [closeKeyboardButton setBackgroundColor:[UIColor whiteColor]];
+    [closeKeyboardButton setBackgroundColor:[UIColor clearColor]];
+    [closeKeyboardButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [closeKeyboardButton addTarget:self action:@selector(removeKeyboard) forControlEvents:UIControlEventTouchUpInside];
-    
+    [[PontoManager sharedInstance] setButtonStyle:closeKeyboardButton];
     [self.view addSubview:closeKeyboardButton];
 }
 
